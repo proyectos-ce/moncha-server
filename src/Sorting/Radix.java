@@ -63,6 +63,10 @@ public class Radix {
 	            
 	        }
 	        
+	        for(int i = 0; i<n; i++){
+	        	list.getAt(i).setDato(list.getAt(i).getDato().replaceAll("\\s", ""));
+	        }
+	        
 	    }
 
 	}

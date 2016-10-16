@@ -29,6 +29,20 @@ public class GenericList<T>{
 		this.lenght++;
 	}
 	
+	public void addLast(T data){	
+		if(this.head == null){
+			addFirst(data);
+		}else{
+			Nodo<T> temp = this.head;
+			while(temp.getNext() != null){
+				temp = temp.getNext();
+			}
+			Nodo<T> newNodo = new Nodo<T>(data);
+			temp.setNext(newNodo);
+
+			this.lenght++;
+		}
+	}
 
 	public void deleteFirst(){
 		if(this.head == null){

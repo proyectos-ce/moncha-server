@@ -19,17 +19,20 @@ public class MainPruebas {
 		l.addFirst("manzana");
 		l.addFirst("pera");
 		l.addFirst("zapallo");
+		l.addLast("papaya");
 		l.printList();
 		
 
-		Quick.quickSort(l);
+		Radix.radixSort(l);
 		System.out.println();
 		System.out.println("Ordenada----------");
 
 		
 		l.printList();
 		
-		System.out.println(BinarySearch.binarySearch(l, "banano"));
+		System.out.println(BinarySearch.binarySearch(l, "mango"));
+
+		
 
 	}
 
