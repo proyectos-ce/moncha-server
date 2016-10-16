@@ -5,10 +5,12 @@ import Structures.FoodType;
 public class Ingredient{
 	private FoodType type;
 	private String name;
+	private int quantity;
 	
-	public Ingredient(FoodType type, String name){
+	public Ingredient(FoodType type, String name, int quantity){
 		this.type=type;
 		this.name=name;
+		this.quantity=quantity;
 	}
 	
 	public String getName() {

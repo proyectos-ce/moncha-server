@@ -166,6 +166,8 @@ public class GenericList<T>{
 	public void setHead(Nodo<T> head) {
 		this.head = head;
 	}
+	
+
 
 
 

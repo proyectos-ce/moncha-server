@@ -1,5 +1,6 @@
 package Structures;
 import Structures.GenericList;
+import Food.Dish;
 import Sorting.BinarySearch;
 import Sorting.Bubble;
 import Sorting.Insertion;
@@ -11,6 +12,10 @@ public class MainPruebas {
 
 	public static void main(String[] args) {
 		GenericList<String> l = new GenericList<String>();
+		Dish di = new Dish("Papas con carne");
+
+
+
 		
 		
 		l.addFirst("banano");
