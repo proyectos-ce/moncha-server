@@ -1,5 +1,6 @@
 package Structures;
 import Structures.GenericList;
+import Sorting.BinarySearch;
 import Sorting.Bubble;
 import Sorting.Insertion;
 import Sorting.Quick;
@@ -27,6 +28,8 @@ public class MainPruebas {
 
 		
 		l.printList();
+		
+		System.out.println(BinarySearch.binarySearch(l, "banano"));
 
 	}
 
