@@ -2,12 +2,14 @@ package Food;
 
 import Structures.FoodType;
 import Structures.GenericList;
+import Structures.RecipeStep;
 
 public class Dish {
 	private double price;
 	private int nutValue, prepTime;
 	private  GenericList<Ingredient> ingredientsList;
-	private String name, recipe;
+	private GenericList<RecipeStep> recipe;
+	private String name;
 	
 	public Dish(String name){
 		this.name=name;
@@ -15,13 +17,18 @@ public class Dish {
 		this.nutValue = 0;
 		this.prepTime = 0;
 		this.ingredientsList = new GenericList<Ingredient>();
-		this.recipe = "";
+		this.recipe = new GenericList<RecipeStep>();
 		
 	}
 	
 	public void addIngredient(String ingredientName, FoodType type, int quantity){
 		Ingredient newIngre = new Ingredient(type, ingredientName, quantity);
 		ingredientsList.addFirst(newIngre);
+	}
+	
+	public void addRecipeStep(String title, String description, double d){
+		RecipeStep newStep = new RecipeStep(title, description,d);
+		recipe.addLast(newStep);
 	}
 
 	
@@ -65,14 +72,15 @@ public class Dish {
 		this.name = name;
 	}
 
-	public String getRecipe() {
+	public GenericList<RecipeStep> getRecipe() {
 		return recipe;
 	}
 
-	public void setRecipe(String recipe) {
+	public void setRecipe(GenericList<RecipeStep> recipe) {
 		this.recipe = recipe;
 	}
-	
+
+
 	
 	
 }

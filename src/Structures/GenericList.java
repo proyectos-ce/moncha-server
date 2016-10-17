@@ -167,9 +167,16 @@ public class GenericList<T>{
 		this.head = head;
 	}
 	
-
-
-
+	@Override
+	public String toString() {
+		String result = "";
+		for(int i =0; i<getLenght(); i++){
+			result += ((i+1)+ ". " + getAt(i).getDato().toString());
+		}
+		return result;
+	}
+	
+	
 
 	public void printList(){
 		if(this.head==null){System.out.println("Lista Vacía");}

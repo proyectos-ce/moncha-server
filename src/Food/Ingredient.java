@@ -30,4 +30,10 @@ public class Ingredient{
 		this.type = type;
 	}
 	
+	@Override
+	public String toString() {
+		String result = "Name: " + getName() + "\nType: " + getType() +"\n";
+		return result;
+	}
+	
 }
