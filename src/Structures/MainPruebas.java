@@ -12,7 +12,8 @@ public class MainPruebas {
 
 	public static void main(String[] args) {
 		GenericList<String> l = new GenericList<String>();
-		Dish di = new Dish("Papas con carne");
+		
+
 
 
 
@@ -28,7 +29,7 @@ public class MainPruebas {
 		l.printList();
 		
 
-		Radix.radixSort(l);
+		Quick.quickSort(l);
 		System.out.println();
 		System.out.println("Ordenada----------");
 
