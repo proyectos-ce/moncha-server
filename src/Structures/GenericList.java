@@ -7,9 +7,7 @@ import Structures.Nodo;
 public class GenericList<T>{
 	private Nodo<T> head;
 	private int lenght;
-
-
-
+	
 
 	public GenericList(){
 		this.head = null;

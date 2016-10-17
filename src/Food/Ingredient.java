@@ -13,6 +13,10 @@ public class Ingredient{
 		this.quantity=quantity;
 	}
 	
+	public Ingredient(){
+		
+	}
+	
 	public String getName() {
 		return name;
 	}
