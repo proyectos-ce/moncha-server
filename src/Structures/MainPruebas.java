@@ -1,6 +1,7 @@
 package Structures;
 import Structures.GenericList;
 import Food.Dish;
+import People.Chef;
 import Sorting.BinarySearch;
 import Sorting.Bubble;
 import Sorting.Insertion;
@@ -13,6 +14,9 @@ public class MainPruebas {
 	public static void main(String[] args) {
 		GenericList<String> l = new GenericList<String>();
 		Dish di = new Dish("Pizza");
+		Dish di1 = new Dish("Helado");
+		Dish di2 = new Dish("Roast Beef");
+		Dish di3 = new Dish("Subway");
 		
 		di.addRecipeStep("Amasar", "Prepare la masa y pasele el rodillo por encima", 5);
 		di.addRecipeStep("Hornear", "Ponga en el horno a 350 grados Fahrenheit", 2);
@@ -47,6 +51,29 @@ public class MainPruebas {
 		l.printList();
 		
 		System.out.println(BinarySearch.binarySearch(l, "mango"));
+		
+		Table t = new Table(1);
+		Chef ch = new Chef("nsdjkfndks55", "Pedro");
+		GenericList<Dish> dishes = new GenericList<Dish>();
+		GenericList<Dish> dishes1 = new GenericList<Dish>();
+		GenericList<Dish> dishes2 = new GenericList<Dish>();
+		
+		dishes.addLast(di);
+		dishes.addLast(di1);
+		dishes.addLast(di2);
+		dishes1.addLast(di3);
+		dishes2.addLast(di1);
+		dishes2.addLast(di3);
+		ch.addOrder(OrderType.Bronze, t, dishes, 2);
+		
+		ch.addOrder(OrderType.Platinum, t, dishes1, 2);
+		ch.addOrder(OrderType.Gold, t, dishes2, 2);
+		ch.addOrder(OrderType.Bronze, t, dishes1, 2);
+		
+		
+		System.out.println(ch.getOrdersQueue());
+
+
 
 		
 

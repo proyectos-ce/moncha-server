@@ -4,10 +4,15 @@ public class Nodo<T> {
 	private T dato;
 	private Nodo<T> next;
 
-	public Nodo(T dato) {
-		this.dato = dato;
+	public Nodo() {
+		this.dato = null;
 		this.next = null;
 		
+	}
+	
+	public Nodo(T data) {
+		super();
+		this.dato = data;
 	}
 
 	public T getDato() {

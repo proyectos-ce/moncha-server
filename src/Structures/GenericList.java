@@ -1,5 +1,6 @@
 package Structures;
 
+import Food.Dish;
 import Structures.Nodo;
 
 
@@ -189,6 +190,17 @@ public class GenericList<T>{
 				
 			}
 		}
+
+
+
+	public void addLast(Nodo<Order> newOrder) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+
 		
 	}
 

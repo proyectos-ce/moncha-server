@@ -26,8 +26,8 @@ public class Dish {
 		ingredientsList.addFirst(newIngre);
 	}
 	
-	public void addRecipeStep(String title, String description, double d){
-		RecipeStep newStep = new RecipeStep(title, description,d);
+	public void addRecipeStep(String title, String description, double approximatedTime){
+		RecipeStep newStep = new RecipeStep(title, description,approximatedTime);
 		recipe.addLast(newStep);
 	}
 
@@ -78,6 +78,12 @@ public class Dish {
 
 	public void setRecipe(GenericList<RecipeStep> recipe) {
 		this.recipe = recipe;
+	}
+	
+	@Override
+	public String toString(){
+		String result = "Dish's name: " + getName() + "\n";
+		return result;
 	}
 
 
