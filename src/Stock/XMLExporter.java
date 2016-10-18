@@ -1,6 +1,5 @@
 package Stock;
 import Food.Ingredient;
-import Structures.FoodType;
 import Structures.GenericList;
 
 import java.io.File;
@@ -11,6 +10,7 @@ public class XMLExporter {
 		Fruits stockFruits = new Fruits();
 		Vegetables stockVegetables = new Vegetables();
 		Milky stockMilky = new Milky();
+		Grains stockGrains = new Grains();
 	
 	try {
 		
@@ -18,16 +18,18 @@ public class XMLExporter {
 		File file = new File("C:\\RestCHEF\\Server\\Fruits.xml");
 		File file1 = new File("C:\\RestCHEF\\Server\\Vegetables.xml");
 		File file2 = new File("C:\\RestCHEF\\Server\\Milky.xml");
+		File file3 = new File("C:\\RestCHEF\\Server\\Grains.xml");
 		
 		
 		
-		JAXBContext jaxbContext = JAXBContext.newInstance(Fruits.class, Vegetables.class, Milky.class, Ingredient.class, GenericList.class);
+		JAXBContext jaxbContext = JAXBContext.newInstance(Fruits.class, Vegetables.class, Grains.class, Milky.class, Ingredient.class, GenericList.class);
 		Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
 		
 
 		jaxbMarshaller.marshal(stockFruits, file);
 		jaxbMarshaller.marshal(stockVegetables, file1);
 		jaxbMarshaller.marshal(stockMilky, file2);
+		jaxbMarshaller.marshal(stockGrains, file3);
 		
 				
 
