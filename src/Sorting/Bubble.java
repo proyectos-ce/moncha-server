@@ -15,7 +15,7 @@ public class Bubble {
 		}
 		
 	for(int i = 0; i<list.getLenght(); i++){
-		list.getAt(i).getDato().setId(i+1);
+		list.getAt(i).getDato().setId(i+41);
 	}
 	}
 

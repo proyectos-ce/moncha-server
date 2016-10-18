@@ -15,11 +15,12 @@ public class XMLImporter {
 
 	 try {
 
-		File file = new File("C:\\RestCHEF\\Fruits.xml");
-		File file1 = new File("C:\\RestCHEF\\Vegetables.xml");
+		File file = new File("C:\\RestCHEF\\Server\\Fruits.xml");
+		File file1 = new File("C:\\RestCHEF\\Server\\Vegetables.xml");
+		File file2 = new File("C:\\RestCHEF\\Server\\Milky.xml");
 		
 		
-		JAXBContext jaxbContext = JAXBContext.newInstance(Fruits.class, Vegetables.class, Ingredient.class, GenericList.class);
+		JAXBContext jaxbContext = JAXBContext.newInstance(Fruits.class, Vegetables.class, Milky.class, Ingredient.class, GenericList.class);
 		Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 		
 		
@@ -27,6 +28,8 @@ public class XMLImporter {
 		
 		Fruits stockFruits = (Fruits) jaxbUnmarshaller.unmarshal(file);
 		Vegetables stockVegetables = (Vegetables) jaxbUnmarshaller.unmarshal(file1);
+		Milky stockMilky = (Milky) jaxbUnmarshaller.unmarshal(file2);
+
 		
 		
 		
@@ -35,12 +38,18 @@ public class XMLImporter {
 		
 		Quick.quickSort(stockFruits.getStockFruits());
 		Shell.shellSort(stockVegetables.getStockVegetables());
+		Bubble.bubbleSort(stockMilky.getStockMilky());
 		
 		System.out.println("Frutas ordenadas\n");
 		System.out.println(stockFruits.getStockFruits());
 		
 		System.out.println("Vegetales ordenados\n");
 		System.out.println(stockVegetables.getStockVegetables());
+
+		System.out.println("Lacteos ordenados\n");
+		System.out.println(stockMilky.getStockMilky());
+		
+		
 
 	  } catch (JAXBException e) {
 		e.printStackTrace();
