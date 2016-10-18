@@ -6,6 +6,7 @@ import javax.xml.bind.Unmarshaller;
 
 import Food.Ingredient;
 import Sorting.Bubble;
+import Sorting.Insertion;
 import Sorting.Quick;
 import Sorting.Radix;
 import Sorting.Shell;
@@ -20,9 +21,10 @@ public class XMLImporter {
 		File file1 = new File("C:\\RestCHEF\\Server\\Vegetables.xml");
 		File file2 = new File("C:\\RestCHEF\\Server\\Milky.xml");
 		File file3 = new File("C:\\RestCHEF\\Server\\Grains.xml");
+		File file4 = new File("C:\\RestCHEF\\Server\\Meats.xml");
 		
 		
-		JAXBContext jaxbContext = JAXBContext.newInstance(Fruits.class, Grains.class, Vegetables.class, Milky.class, Ingredient.class, GenericList.class);
+		JAXBContext jaxbContext = JAXBContext.newInstance(Fruits.class, Meats.class,  Grains.class, Vegetables.class, Milky.class, Ingredient.class, GenericList.class);
 		Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
 		
 		
@@ -32,6 +34,7 @@ public class XMLImporter {
 		Vegetables stockVegetables = (Vegetables) jaxbUnmarshaller.unmarshal(file1);
 		Milky stockMilky = (Milky) jaxbUnmarshaller.unmarshal(file2);
 		Grains stockGrains = (Grains) jaxbUnmarshaller.unmarshal(file3);
+		Meats stockMeats = (Meats) jaxbUnmarshaller.unmarshal(file4);
 
 		
 		
@@ -43,6 +46,7 @@ public class XMLImporter {
 		Shell.shellSort(stockVegetables.getStockVegetables());
 		Bubble.bubbleSort(stockMilky.getStockMilky());
 		Radix.radixSort(stockGrains.getStockGrains());
+		Insertion.insertionSort(stockMeats.getStockMeats());
 		
 		System.out.println("Frutas ordenadas\n");
 		System.out.println(stockFruits.getStockFruits());
@@ -55,6 +59,9 @@ public class XMLImporter {
 		
 		System.out.println("Granos ordenados\n");
 		System.out.println(stockGrains.getStockGrains());
+		
+		System.out.println("Carnes ordenadas\n");
+		System.out.println(stockMeats.getStockMeats());
 		
 		
 
