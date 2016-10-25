@@ -1,6 +1,6 @@
 # Moncha server
-=======
 **MO**NCHA IS **N**OT **CH**EF **A**PP 
+=======
 
 ## Requirements ##
 
@@ -9,23 +9,23 @@
  - Tomcat 8
  - JDK 8
 
-## Instructions for building ##
+## Building ##
 
     $ mvn package
 
-## Instructions for running the server ##
+## Running the server ##
 
     $ java -jar target/dependency/webapp-runner.jar target/*.war
 
 *The server will start in port 8080.*
 
-## Instructions for deploying to Heroku ##
+## Deploying to Heroku ##
 
-    $ mvn clean heroku:deploy-war`
+    $ mvn clean heroku:deploy-war
     
     
     
-## Further resources ##
+## Further reading ##
 
  - https://devcenter.heroku.com/articles/java-webapp-runner
  - https://devcenter.heroku.com/articles/deploying-java-applications-with-the-heroku-maven-plugin
