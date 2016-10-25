@@ -1,6 +1,6 @@
-# Moncha server #
-**MO**NCHA IS **N**OT **CH**EF **A**PP 
+# Moncha server
 =======
+**MO**NCHA IS **N**OT **CH**EF **A**PP 
 
 ## Requirements ##
 
@@ -22,7 +22,6 @@
 ## Deploying to Heroku ##
 
     $ mvn clean heroku:deploy-war
-    
     
     
 ## Further reading ##
