@@ -17,6 +17,15 @@
 
     $ java -jar target/dependency/webapp-runner.jar target/*.war
 
+*The server will start in port 8080.*
+
 ## Instructions for deploying to Heroku ##
 
-`$ mvn clean heroku:deploy-war`
+    $ mvn clean heroku:deploy-war`
+    
+    
+    
+## Further resources ##
+
+ - https://devcenter.heroku.com/articles/deploying-java-applications-with-the-heroku-maven-plugin
+ - https://devcenter.heroku.com/articles/java-webapp-runner
