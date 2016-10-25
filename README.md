@@ -29,3 +29,4 @@
 
  - https://devcenter.heroku.com/articles/deploying-java-applications-with-the-heroku-maven-plugin
  - https://devcenter.heroku.com/articles/java-webapp-runner
+ - https://devcenter.heroku.com/articles/deploying-java-applications-with-the-heroku-maven-plugin
