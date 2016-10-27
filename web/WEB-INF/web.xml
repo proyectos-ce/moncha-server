@@ -5,4 +5,11 @@
 
     <display-name>Moncha app server</display-name>
 
+    <listener>
+        <description>Application startup and shutdown events</description>
+        <display-name>Test</display-name>
+        <listener-class>cr.tec.utils.AppStartup</listener-class>
+    </listener>
+
+
 </web-app>

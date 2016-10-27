@@ -29,6 +29,22 @@
             <artifactId>json</artifactId>
             <version>20160810</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.glassfish.jersey.media/jersey-media-json-jackson -->
+        <dependency>
+            <groupId>org.glassfish.jersey.media</groupId>
+            <artifactId>jersey-media-json-jackson</artifactId>
+            <version>${jersey2.version}</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/xstream/xstream -->
+        <dependency>
+            <groupId>xstream</groupId>
+            <artifactId>xstream</artifactId>
+            <version>1.2.2</version>
+        </dependency>
+
+
     </dependencies>
 
 
