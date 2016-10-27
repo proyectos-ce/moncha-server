@@ -6,6 +6,7 @@ import cr.tec.utils.Database;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,9 +42,12 @@ public class DishesApi {
 		ArrayList<Dish> menu = Database.getDishes();
 		menu.add(newDish);
 
-		Database.saveDishes(menu);
-
-		return new Message("ok", "Dish (" + newDish + ") added successfully.");
+		try {
+			Database.saveDishes(menu);
+			return new Message("ok", "Dish (" + newDish + ") added successfully.");
+		} catch (FileNotFoundException e) {
+			return new Message("error", "An error occured while adding the dish.");
+		}
 
 	}
 

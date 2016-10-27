@@ -2,8 +2,7 @@ package cr.tec.utils;
 
 import cr.tec.struct.Dish;
 
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -34,7 +33,7 @@ public class Database {
 
 		//Get file from resources folder
 		ClassLoader classLoader = Database.class.getClassLoader();
-		File file = new File(classLoader.getResource(fileName).getFile());
+		File file = new File(classLoader.getResource("db/" + fileName).getFile());
 
 		try (Scanner scanner = new Scanner(file)) {
 
@@ -53,14 +52,22 @@ public class Database {
 
 	}
 
-	public static void saveDishes(ArrayList<Dish> dishList) {
+	private static void saveFile(String filename, String data) throws FileNotFoundException {
+		String dir = Database.class.getResource("/db/").getFile();
+		OutputStream os = new FileOutputStream(dir + filename);
+		final PrintStream printStream = new PrintStream(os);
+		printStream.println(data);
+		printStream.close();
+	}
+
+	public static void saveDishes(ArrayList<Dish> dishList) throws FileNotFoundException {
 		String xml = dishesWorker.toXML(dishList);
-		System.out.println(xml);
+		saveFile("dishes.xml", xml);
 
 	}
 
 	public static ArrayList<Dish> getDishes() {
-		String xml = getFile("db/dishes.xml");
+		String xml = getFile("dishes.xml");
 		return (ArrayList<Dish>)dishesWorker.fromXML(xml);
 	}
 }
