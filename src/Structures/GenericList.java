@@ -1,6 +1,7 @@
 package Structures;
 
 import Food.Dish;
+import Food.Ingredient;
 import Structures.Nodo;
 
 
@@ -188,6 +189,7 @@ public class GenericList<T>{
 				
 			}
 		}
+	
 
 
 

@@ -21,6 +21,10 @@ public class Dish {
 		
 	}
 	
+	public void addIngredient(Ingredient newIngredient){
+		ingredientsList.addFirst(newIngredient);
+	}
+	
 	public void addIngredient(String ingredientName, FoodType type, int quantity){
 		Ingredient newIngre = new Ingredient(type, ingredientName, quantity);
 		ingredientsList.addFirst(newIngre);
