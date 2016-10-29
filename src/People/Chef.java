@@ -9,20 +9,19 @@ import Structures.Table;
 
 public class Chef {
 	private String id, name;
-	private OrdersPriorityQueue ordersQueue;
+	private GenericList<Order> chefOrderList;
 	
 	
 	public Chef(String id, String name){
 		this.id = id;
 		this.name = name;
-		this.ordersQueue = new OrdersPriorityQueue();
+		this.chefOrderList = new GenericList<Order>();
 	}
 	
 	public void addOrder(OrderType orderPriority, Table table, GenericList<Dish> dishes, long orderTime){
 		Order newOrder = new Order(orderPriority, table, dishes, orderTime);
-		ordersQueue.addLast(newOrder);
+		chefOrderList.addLast(newOrder);
 	}
-
 
 	public String getId() {
 		return id;
@@ -43,17 +42,13 @@ public class Chef {
 		this.name = name;
 	}
 
-
-	public OrdersPriorityQueue getOrdersQueue() {
-		return ordersQueue;
+	public GenericList<Order> getChefOrderList() {
+		return chefOrderList;
 	}
 
-
-	public void setOrdersQueue(OrdersPriorityQueue ordersQueue) {
-		this.ordersQueue = ordersQueue;
+	public void setChefOrderList(GenericList<Order> chefOrderList) {
+		this.chefOrderList = chefOrderList;
 	}
-	
-	
 	
 	
 }

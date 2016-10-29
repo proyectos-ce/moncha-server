@@ -1,5 +1,6 @@
 package People;
 
+import Food.Dish;
 import Structures.GenericList;
 import Structures.Order;
 import Structures.OrderType;
@@ -11,7 +12,7 @@ public class Client {
 	private OrderType clientCathegory;
 	private Table clientTable;
 	private double receipt;
-	private GenericList<Order> clientOrders;
+	private GenericList<Dish> clientReceiptDishes;
 	
 	public Client(int clientID, String name, OrderType clientCathegory, Table clientTable){
 		this.clientID = clientID;
@@ -19,7 +20,7 @@ public class Client {
 		this.clientCathegory = clientCathegory;
 		this.clientTable = clientTable;
 		this.receipt = 0.0;
-		this.clientOrders = new GenericList<Order>();
+		this.clientReceiptDishes = new GenericList<Dish>();
 	}
 
 }

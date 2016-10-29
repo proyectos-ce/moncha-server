@@ -43,6 +43,26 @@ public class GenericList<T>{
 			this.lenght++;
 		}
 	}
+	
+	public void deleteNode(T data){
+		if(this.head ==null){
+			System.out.println("La lista está vacía");
+		}
+		else if(getHead().equals(data)){
+			deleteFirst();
+		}
+		else{
+			for(int i =0; i<this.lenght; i++){
+				if(i == this.lenght - 1){
+					deleteLast();
+				}
+				else if(getAt(i).equals(data)){	
+					getAt(i-1).setNext(getAt(i).getNext());
+				}
+			}
+		}
+	}
+	
 
 	public void deleteFirst(){
 		if(this.head == null){

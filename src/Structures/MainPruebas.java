@@ -12,7 +12,7 @@ import Sorting.Shell;
 public class MainPruebas {
 
 	public static void main(String[] args) {
-		GenericList<String> l = new GenericList<String>();
+/*		GenericList<String> l = new GenericList<String>();
 		Dish di = new Dish("Pizza");
 		Dish di1 = new Dish("Helado");
 		Dish di2 = new Dish("Roast Beef");
@@ -71,7 +71,22 @@ public class MainPruebas {
 		ch.addOrder(OrderType.Bronze, t, dishes1, 2);
 		
 		
-		System.out.println(ch.getOrdersQueue());
+		System.out.println(ch.getOrdersQueue());*/
+		
+		GenericList<Dish> d = new GenericList<Dish>();
+		Dish n1 = new Dish("Papas");
+		Dish n2 = new Dish("Fresas");
+		Dish n3 = new Dish("Uvas");
+		
+		d.addLast(n3);
+		d.addLast(n2);
+		d.addLast(n1);
+		
+		d.printList();
+		
+		System.out.println("holi");
+		d.deleteNode(n2);
+		d.printList();
 
 
 
