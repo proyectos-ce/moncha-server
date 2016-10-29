@@ -21,8 +21,12 @@ public class DishesApi {
 	@GET
 	@Produces({MediaType.APPLICATION_JSON})
 	public LinkedList<Dish> getMenu() {
-		LinkedList<Dish> menu = Database.getDishes();
-		return menu;
+		try {
+			return Database.getDishes();
+		} catch (Exception e) {
+			// Regresa lista vacía en lugar de error si no hay Dishes
+			return new LinkedList<Dish>();
+		}
 	}
 
 	@GET
@@ -42,8 +46,12 @@ public class DishesApi {
 	@Produces({MediaType.APPLICATION_JSON})
 	@Consumes({MediaType.APPLICATION_JSON})
 	public Message createDish(Dish newDish) {
-		LinkedList<Dish> menu = Database.getDishes();
-
+		LinkedList<Dish> menu = null;
+		try {
+			menu = Database.getDishes();
+		} catch (Exception ignored) {
+			menu = new LinkedList<Dish>();
+		}
 		try {
 			newDish.setId(menu.getLast().getId() + 1);
 		} catch (Exception e) {
