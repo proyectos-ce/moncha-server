@@ -1,43 +1,56 @@
 package cr.tec.struct;
 
+import cr.tec.utils.Database;
+
+import java.util.LinkedList;
+
 /**
  * Created by Jimena on 10/26/16.
  */
 
-import cr.tec.struct.generic.GenericList;
 
 public class Dish {
 	private double price;
 	private int nutValue, prepTime;
-	private GenericList<Ingredient> ingredientsList;
-	private GenericList<RecipeStep> recipe;
+	private LinkedList<Ingredient> ingredientsList;
+	private LinkedList<RecipeStep> recipe;
 	private String name;
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	private int id;
 
 	public Dish() {
 		this("null");
 	}
 
-	public Dish(String name){
-		this.name=name;
+	public Dish(String name) {
+		this.name = name;
 		this.price = 0;
 		this.nutValue = 0;
 		this.prepTime = 0;
-		this.ingredientsList = new GenericList<Ingredient>();
-		this.recipe = new GenericList<RecipeStep>();
+		this.ingredientsList = new LinkedList<Ingredient>();
+		this.recipe = new LinkedList<RecipeStep>();
 
 	}
 
-	public void addIngredient(Ingredient newIngredient){
+	public int getId() {
+		return id;
+	}
+
+	public void addIngredient(Ingredient newIngredient) {
 		ingredientsList.addFirst(newIngredient);
 	}
 
-	public void addIngredient(String ingredientName, FoodType type, int quantity){
+	public void addIngredient(String ingredientName, FoodType type, int quantity) {
 		Ingredient newIngre = new Ingredient(type, ingredientName, quantity);
 		ingredientsList.addFirst(newIngre);
 	}
 
-	public void addRecipeStep(String title, String description, double approximatedTime){
-		RecipeStep newStep = new RecipeStep(title, description,approximatedTime);
+	public void addRecipeStep(String title, String description, double approximatedTime) {
+		RecipeStep newStep = new RecipeStep(title, description, approximatedTime);
 		recipe.addLast(newStep);
 	}
 
@@ -66,11 +79,11 @@ public class Dish {
 		this.prepTime = prepTime;
 	}
 
-	public GenericList<Ingredient> getIngredientsList() {
+	public LinkedList<Ingredient> getIngredientsList() {
 		return ingredientsList;
 	}
 
-	public void setIngredientsList(GenericList<Ingredient> ingredientsList) {
+	public void setIngredientsList(LinkedList<Ingredient> ingredientsList) {
 		this.ingredientsList = ingredientsList;
 	}
 
@@ -82,21 +95,19 @@ public class Dish {
 		this.name = name;
 	}
 
-	public GenericList<RecipeStep> getRecipe() {
+	public LinkedList<RecipeStep> getRecipe() {
 		return recipe;
 	}
 
-	public void setRecipe(GenericList<RecipeStep> recipe) {
+	public void setRecipe(LinkedList<RecipeStep> recipe) {
 		this.recipe = recipe;
 	}
 
 	@Override
-	public String toString(){
+	public String toString() {
 		String result = "Dish's name: " + getName();
 		return result;
 	}
-
-
 
 
 }

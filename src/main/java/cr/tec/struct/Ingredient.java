@@ -7,6 +7,15 @@ package cr.tec.struct;
 public class Ingredient{
 	private FoodType type;
 	private String name;
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
 	private int quantity, id;
 
 	public Ingredient(FoodType type, String name, int quantity){

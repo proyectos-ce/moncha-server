@@ -3,7 +3,7 @@ package cr.tec.utils;
 import cr.tec.struct.Dish;
 
 import java.io.*;
-import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.Scanner;
 
 import com.thoughtworks.xstream.XStream;
@@ -16,11 +16,11 @@ public class Database {
 	private static XStream dishesWorker = new XStream();
 	private static boolean configured = false;
 
-	public static void configure() {
+	static void configure() {
 		if (!configured) {
 			dishesWorker.alias("dish", Dish.class);
-			dishesWorker.alias("dishes", ArrayList.class);
-			dishesWorker.addImplicitCollection(ArrayList.class, "list");
+			dishesWorker.alias("dishes", LinkedList.class);
+			dishesWorker.addImplicitCollection(LinkedList.class, "list");
 			configured = true;
 		}
 
@@ -57,17 +57,18 @@ public class Database {
 		OutputStream os = new FileOutputStream(dir + filename);
 		final PrintStream printStream = new PrintStream(os);
 		printStream.println(data);
+		printStream.flush();
 		printStream.close();
 	}
 
-	public static void saveDishes(ArrayList<Dish> dishList) throws FileNotFoundException {
+	public static void saveDishes(LinkedList<Dish> dishList) throws FileNotFoundException {
 		String xml = dishesWorker.toXML(dishList);
 		saveFile("dishes.xml", xml);
 
 	}
 
-	public static ArrayList<Dish> getDishes() {
+	public static LinkedList<Dish> getDishes() {
 		String xml = getFile("dishes.xml");
-		return (ArrayList<Dish>)dishesWorker.fromXML(xml);
+		return (LinkedList<Dish>)dishesWorker.fromXML(xml);
 	}
 }
