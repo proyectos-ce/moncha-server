@@ -3,16 +3,19 @@ package Structures;
 import Food.Dish;
 import Food.Ingredient;
 import Structures.Nodo;
+import java.util.Iterator;
 
 
-public class GenericList<T>{
+public class GenericList<T> implements Iterable<T>, Iterator{
 	private Nodo<T> head;
 	private int lenght;
+	private Iterator it;
 	
 
 	public GenericList(){
 		this.head = null;
 		this.lenght = 0;
+		
 	}
 	
 	
@@ -216,6 +219,35 @@ public class GenericList<T>{
 	public void addLast(Nodo<Order> newOrder) {
 		// TODO Auto-generated method stub
 		
+	}
+
+
+
+	@Override
+	public Iterator<T> iterator() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+
+	@Override
+	public boolean hasNext() {
+		if(this.head == null)return false;
+		else{
+		Nodo<T> currentNode = this.head;
+		if(currentNode.getNext() != null)return true;
+		else {return false;}
+		}
+		
+	}
+
+
+
+	@Override
+	public Object next() {
+		
+		return null;
 	}
 
 

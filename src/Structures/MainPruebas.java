@@ -1,5 +1,8 @@
 package Structures;
 import Structures.GenericList;
+
+import java.util.Iterator;
+
 import Food.Dish;
 import People.Chef;
 import Sorting.BinarySearch;
@@ -73,7 +76,13 @@ public class MainPruebas {
 		
 		System.out.println(ch.getOrdersQueue());*/
 		
-		GenericList<Dish> d = new GenericList<Dish>();
+		/*GenericList<Dish> d = new GenericList<Dish>();
+		Iterator<Dish> iter = d.iterator();
+		
+		
+		
+		
+		
 		Dish n1 = new Dish("Papas");
 		Dish n2 = new Dish("Fresas");
 		Dish n3 = new Dish("Uvas");
@@ -86,7 +95,21 @@ public class MainPruebas {
 		
 		System.out.println("holi");
 		d.deleteNode(n2);
-		d.printList();
+		d.printList();*/
+		
+		GenericList<Dish> d = new GenericList<Dish>();
+		Iterator<Dish> iter = d.iterator();
+		Dish n1 = new Dish("Papas");
+		Dish n2 = new Dish("Fresas");
+		Dish n3 = new Dish("Uvas");
+		d.addLast(n3);
+		d.addLast(n2);
+		d.addLast(n1);
+		
+		while(iter.hasNext()){
+			System.out.println(iter.next());
+		}
+		
 
 
 
