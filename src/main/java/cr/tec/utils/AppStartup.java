@@ -1,5 +1,7 @@
 package cr.tec.utils;
 
+import org.jose4j.lang.JoseException;
+
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
