@@ -31,7 +31,7 @@ public class OrdersPriorityQueue extends GenericList<Order> implements Comparabl
 	
 	@Override
 	public void addLast(Order newOrder) {
-		Nodo<Order> newOrder1 = new Nodo<Order>(newOrder);
+		Node<Order> newOrder1 = new Node<Order>(newOrder);
 		addLast(newOrder1);
 	}
 
@@ -40,7 +40,7 @@ public class OrdersPriorityQueue extends GenericList<Order> implements Comparabl
 	 */
 	@Override
 
-	public void addLast(Nodo<Order> newOrder) {
+	public void addLast(Node<Order> newOrder) {
 		
 		if (this.getHead()==null) {
 			System.out.println(newOrder.getDato().getOrderPriority());
@@ -61,7 +61,7 @@ public class OrdersPriorityQueue extends GenericList<Order> implements Comparabl
 		
 		else {
 			
-			Nodo<Order> current = this.getHead();
+			Node<Order> current = this.getHead();
 			while (current.getNext() != null) {
 				System.out.println(current.getNext().getDato().compareTo(newOrder.getDato()));
 				if (current.getNext().getDato().compareTo(newOrder.getDato()) >= 1){
