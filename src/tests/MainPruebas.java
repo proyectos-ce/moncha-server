@@ -1,4 +1,4 @@
-package Structures;
+package tests;
 import Structures.GenericList;
 
 import java.util.Iterator;
@@ -15,7 +15,8 @@ import Sorting.Shell;
 public class MainPruebas {
 
 	public static void main(String[] args) {
-/*		GenericList<String> l = new GenericList<String>();
+/*
+		GenericList<String> l = new GenericList<String>();
 		Dish di = new Dish("Pizza");
 		Dish di1 = new Dish("Helado");
 		Dish di2 = new Dish("Roast Beef");
@@ -23,7 +24,7 @@ public class MainPruebas {
 		
 		di.addRecipeStep("Amasar", "Prepare la masa y pasele el rodillo por encima", 5);
 		di.addRecipeStep("Hornear", "Ponga en el horno a 350 grados Fahrenheit", 2);
-		di.addRecipeStep("Preparación de la salsa", "Mezcle salsa de tomate con especies", 0.5);
+		di.addRecipeStep("Preparaciï¿½n de la salsa", "Mezcle salsa de tomate con especies", 0.5);
 		
 		di.addIngredient("Queso", FoodType.milky, 6);
 		di.addIngredient("Jamon", FoodType.meat, 10);
