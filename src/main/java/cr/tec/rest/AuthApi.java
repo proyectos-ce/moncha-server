@@ -1,5 +1,7 @@
 package cr.tec.rest;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import cr.tec.struct.Role;
 import cr.tec.struct.User;
 import cr.tec.utils.security.TokenProvider;
 import org.jose4j.lang.JoseException;
@@ -16,12 +18,13 @@ public class AuthApi {
 	@Path("/client")
 	@Produces({MediaType.TEXT_PLAIN})
 	@Consumes({MediaType.APPLICATION_JSON})
-	public String authClient(User meta) throws JoseException {
-		return TokenProvider.issueToken(meta.getTable(), meta.getOrderType());
+	public String authClient(User meta) throws JoseException, JsonProcessingException {
+		meta.setRole(Role.CLIENT);
+		return TokenProvider.issueToken(meta);
 
 	}
 	@POST
-	@Path("/client")
+	@Path("/chef")
 	@Produces({MediaType.TEXT_PLAIN})
 	@Consumes({MediaType.APPLICATION_JSON})
 	public String authChef() throws JoseException {

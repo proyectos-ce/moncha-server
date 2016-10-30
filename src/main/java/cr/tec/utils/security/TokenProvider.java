@@ -1,5 +1,7 @@
 package cr.tec.utils.security;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import cr.tec.struct.User;
 import cr.tec.struct.OrderType;
 import org.jose4j.jws.AlgorithmIdentifiers;
@@ -18,7 +20,10 @@ public class TokenProvider {
 	private static boolean initialized = false;
 
 
-	public static String issueToken(int table, OrderType type) throws JoseException {
+	public static String issueToken(User userData) throws JoseException, JsonProcessingException {
+
+		ObjectMapper mapper = new ObjectMapper();
+		String json = mapper.writeValueAsString(userData);
 
 		// Create the Claims, which will be the content of the JWT
 		JwtClaims claims = new JwtClaims();
@@ -29,8 +34,7 @@ public class TokenProvider {
 		claims.setIssuedAtToNow();  // when the token was issued/created (now)
 		claims.setNotBeforeMinutesInThePast(2); // time before which the token is not yet valid (2 minutes ago)
 		claims.setSubject("orderTable"); // the subject/principal is whom the token is about
-		claims.setClaim("table",table); // additional claims/attributes about the subject can be added
-		claims.setClaim("orderType",type.getValue());
+		claims.setClaim("userData",json); // additional claims/attributes about the subject can be added
 
 		// A JWT is a JWS and/or a JWE with JSON claims as the payload.
 		// In this example it is a JWS so we create a JsonWebSignature object.
@@ -74,9 +78,13 @@ public class TokenProvider {
 		{
 			//  Validate the JWT and process it to the Claims
 			JwtClaims jwtClaims = jwtConsumer.processToClaims(data);
-			return new User((int) (long) jwtClaims.getClaimValue("table"), OrderType.fromInt((int) (long) jwtClaims.getClaimValue("orderType")));
+			ObjectMapper mapper = new ObjectMapper();
+			String json = (String) jwtClaims.getClaimValue("userData");
+			byte[] bytes = json.getBytes("UTF-8");
+			return mapper.readValue(bytes, User.class);
 		}
 		catch (Exception e) {
+			System.out.println(e.getMessage());
 			return null;
 		}
 
