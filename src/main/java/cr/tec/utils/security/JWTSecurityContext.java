@@ -10,13 +10,13 @@ import java.util.Set;
  */
 public class JWTSecurityContext implements SecurityContext {
 	private JWTPrincipal principal;
-	private boolean      isSecure;
+	private boolean isSecure;
 	private Set<String> roles = new HashSet<>();
 
 	public JWTSecurityContext(final JWTPrincipal principal, final boolean isSecure) {
-		this.principal  = principal;
-		this.isSecure   = isSecure;
-		String[] names  = principal.getRoles();
+		this.principal = principal;
+		this.isSecure = isSecure;
+		String[] names = principal.getRoles();
 		for (int iIndex = 0; names != null && iIndex < names.length; ++iIndex) {
 			roles.add(names[iIndex]);
 		}

@@ -12,11 +12,12 @@ public class JWTPrincipal implements Principal {
 	private User userData;
 	private String[] roles;
 
-	public JWTPrincipal(
+	private JWTPrincipal(
 			final String name,
-			final User userData) {
+			final User userData, final String[] roles) {
 		this.name = name;
 		this.userData = userData;
+		this.roles = roles;
 	}
 
 	public static JWTPrincipal buildPrincipal(final User userData) {
@@ -24,11 +25,7 @@ public class JWTPrincipal implements Principal {
 
 		try {
 			if (userData != null) {
-				String name = null;
-
-				// TODO: Extract custom attributes, e.g. roles, organization affiliation etc. and put into principal.
-
-				principal = new JWTPrincipal(name, userData);
+				principal = new JWTPrincipal(null, userData, new String[] {userData.getRole().toString()});
 			}
 		} catch (Exception ignored) {
 		}
@@ -50,6 +47,14 @@ public class JWTPrincipal implements Principal {
 	public String[] getRoles() {
 		return roles;
 	}
+
+	/**
+	 * @param roles the roles to set
+	 */
+	public void setRoles(String[] roles) {
+		this.roles = roles;
+	}
+
 
 
 

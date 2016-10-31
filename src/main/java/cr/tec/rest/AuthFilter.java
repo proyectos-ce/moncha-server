@@ -1,6 +1,7 @@
 package cr.tec.rest;
 
 import cr.tec.struct.Message;
+import cr.tec.struct.Role;
 import cr.tec.struct.User;
 import cr.tec.utils.security.Secured;
 import cr.tec.utils.security.TokenProvider;
@@ -8,15 +9,23 @@ import cr.tec.utils.security.JWTPrincipal;
 import cr.tec.utils.security.JWTSecurityContext;
 
 import javax.annotation.Priority;
+import javax.ws.rs.ForbiddenException;
 import javax.ws.rs.NotAuthorizedException;
 import javax.ws.rs.Priorities;
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerRequestFilter;
+import javax.ws.rs.container.ResourceInfo;
+import javax.ws.rs.core.Context;
 import javax.ws.rs.core.HttpHeaders;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.Provider;
 import java.io.IOException;
+import java.lang.reflect.AnnotatedElement;
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Created by joseph on 10/30/16.
@@ -26,8 +35,21 @@ import java.io.IOException;
 @Priority(Priorities.AUTHENTICATION)
 public class AuthFilter implements ContainerRequestFilter {
 
+	@Context
+	private ResourceInfo resourceInfo;
+
 	@Override
 	public void filter(ContainerRequestContext requestContext) throws IOException {
+
+		// Get the resource class which matches with the requested URL
+		// Extract the roles declared by it
+		Class<?> resourceClass = resourceInfo.getResourceClass();
+		List<Role> classRoles = extractRoles(resourceClass);
+
+		// Get the resource method which matches with the requested URL
+		// Extract the roles declared by it
+		Method resourceMethod = resourceInfo.getResourceMethod();
+		List<Role> methodRoles = extractRoles(resourceMethod);
 
 		// Get the HTTP Authorization header from the request
 		String authorizationHeader =
@@ -55,6 +77,20 @@ public class AuthFilter implements ContainerRequestFilter {
 			return;
 		}
 
+		try {
+			// Check if the user is allowed to execute the method
+			// The method annotations override the class annotations
+			if (methodRoles.isEmpty()) {
+				checkPermissions(classRoles, userData);
+			} else {
+				checkPermissions(methodRoles, userData);
+			}
+
+		} catch (Exception e) {
+			requestContext.abortWith(
+					Response.status(Response.Status.FORBIDDEN).build());
+		}
+
 
 		JWTPrincipal principal = JWTPrincipal.buildPrincipal(userData);
 
@@ -67,8 +103,33 @@ public class AuthFilter implements ContainerRequestFilter {
 
 	}
 
-	private void validateToken(String token) throws Exception {
-		// Check if it was issued by the server and if it's not expired
-		// Throw an Exception if the token is invalid
+	// Extract the roles from the annotated element
+	private List<Role> extractRoles(AnnotatedElement annotatedElement) {
+		if (annotatedElement == null) {
+			return new ArrayList<Role>();
+		} else {
+			Secured secured = annotatedElement.getAnnotation(Secured.class);
+			if (secured == null) {
+				return new ArrayList<Role>();
+			} else {
+				Role[] allowedRoles = secured.value();
+				return Arrays.asList(allowedRoles);
+			}
+		}
+	}
+
+
+	private void checkPermissions(List<Role> allowedRoles, User userData) throws Exception {
+		// Check if the user contains one of the allowed roles
+		// Throw an Exception if the user has not permission to execute the method
+
+		if (allowedRoles.isEmpty()) {
+			return;
+		}
+
+		if (!allowedRoles.contains(userData.getRole())) {
+			throw new ForbiddenException();
+		}
+
 	}
 }

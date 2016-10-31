@@ -2,8 +2,11 @@ package cr.tec.rest;
 
 import cr.tec.struct.Ingredient;
 import cr.tec.struct.Message;
+import cr.tec.struct.Role;
 import cr.tec.utils.Database;
+import cr.tec.utils.security.Secured;
 
+import javax.annotation.security.RolesAllowed;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -18,6 +21,7 @@ public class IngredientsApi {
 
 
 	@GET
+	@Secured
 	@Produces({MediaType.APPLICATION_JSON})
 	public LinkedList<Ingredient> getIngredients() {
 		try {
@@ -29,6 +33,7 @@ public class IngredientsApi {
 	}
 
 	@GET
+	@Secured({Role.CHEF})
 	@Path("{id}")
 	@Produces("application/json")
 	public Response getIngredient(@PathParam("id") int id) {
@@ -42,6 +47,7 @@ public class IngredientsApi {
 	}
 
 	@POST
+	@Secured
 	@Produces({MediaType.APPLICATION_JSON})
 	@Consumes({MediaType.APPLICATION_JSON})
 	public Message createIngredient(Ingredient newIngredient) {
@@ -69,6 +75,7 @@ public class IngredientsApi {
 	}
 
 	@DELETE
+	@Secured
 	@Path("{id}")
 	@Produces({MediaType.APPLICATION_JSON})
 	public Message deleteIngredient(@PathParam("id") int id) throws FileNotFoundException {
@@ -84,6 +91,7 @@ public class IngredientsApi {
 	}
 
 	@POST
+	@Secured
 	@Path("{id}")
 	@Produces({MediaType.APPLICATION_JSON})
 	public Message updateIngredient(Ingredient updatedIngredient, @PathParam("id") int id) throws FileNotFoundException {
