@@ -1,11 +1,14 @@
 package cr.tec.struct.generic;
 
+
+import cr.tec.struct.Order;
+
+import java.io.Serializable;
+import java.util.AbstractSequentialList;
 import java.util.Iterator;
 import java.util.function.Consumer;
 
-import static com.sun.org.apache.xalan.internal.xsltc.compiler.util.Type.Node;
-
-public class GenericList<T> implements Iterable<T> {
+public class GenericList<T> implements Iterable<T>, Serializable, Cloneable {
 	private Node<T> head;
 	private int lenght;
 	// private Iterator<T> it;
@@ -109,6 +112,15 @@ public class GenericList<T> implements Iterable<T> {
 		}
 	}
 
+	public Node<T> getLast(){
+		if(this.head == null){
+			System.out.println("La lista esta vacia");
+			return null;
+		}else{
+			return getAt(this.lenght-1);
+		}
+	}
+
 	public void swap(int i, int j) {
 		if (i >= 0 && i < this.lenght && j >= 0 && j < this.lenght) {
 			T temp = getAt(i).getData();
@@ -154,7 +166,7 @@ public class GenericList<T> implements Iterable<T> {
 		}
 	}
 
-	public int getLenght() {
+	public int size() {
 		return lenght;
 	}
 
@@ -173,7 +185,7 @@ public class GenericList<T> implements Iterable<T> {
 	@Override
 	public String toString() {
 		String result = "";
-		for (int i = 0; i < getLenght(); i++) {
+		for (int i = 0; i < size(); i++) {
 			result += ((i + 1) + ". " + getAt(i).getData().toString());
 		}
 		return result;
@@ -195,13 +207,17 @@ public class GenericList<T> implements Iterable<T> {
 
 	@Override
 	public Iterator<T> iterator() {
-		
-		// TODO Auto-generated method stub
-		return null;
+		Iterator<T> newItetaror = new SimpleIterator<>(this);
+		return newItetaror;
 	}
 
 	@Override
 	public void forEach(Consumer<? super T> action) {
 		// TODO Auto-generated method stub
+	}
+
+	public void addLast(Node<Order> newOrder) {
+		// TODO Auto-generated method stub
+
 	}
 }
