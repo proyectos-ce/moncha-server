@@ -1,4 +1,4 @@
-package cr.tec.rest;
+package cr.tec.utils;
 
 import org.glassfish.jersey.jackson.JacksonFeature;
 import org.glassfish.jersey.server.ResourceConfig;
@@ -6,8 +6,8 @@ import org.glassfish.jersey.server.ResourceConfig;
 import javax.ws.rs.ApplicationPath;
 
 @ApplicationPath("api")
-public class ApplicationConfig extends ResourceConfig {
-	public ApplicationConfig() {
+public class AppConfig extends ResourceConfig {
+	public AppConfig() {
 		packages("cr.tec.rest");
 		register(JacksonFeature.class);
 	}

@@ -84,7 +84,6 @@ public class TokenProvider {
 			return mapper.readValue(bytes, User.class);
 		}
 		catch (Exception e) {
-			System.out.println(e.getMessage());
 			return null;
 		}
 
