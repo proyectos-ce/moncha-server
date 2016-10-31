@@ -50,7 +50,8 @@ public class AuthFilter implements ContainerRequestFilter {
 				requestContext.abortWith(Response.status(Response.Status.UNAUTHORIZED).entity(new Message("error", "HARAMBE ERROR: The token is invalid.")).type(MediaType.APPLICATION_JSON).build());
 			}
 		} catch (Exception e) {
-				requestContext.abortWith(Response.status(Response.Status.UNAUTHORIZED).entity(new Message("error", "HARAMBE ERROR: An error occured while decoding the token.")).type(MediaType.APPLICATION_JSON).build());
+				requestContext.abortWith(
+						Response.status(Response.Status.UNAUTHORIZED).entity(new Message("error", "HARAMBE ERROR: An error occurred while decoding the token.")).type(MediaType.APPLICATION_JSON).build());
 			return;
 		}
 
