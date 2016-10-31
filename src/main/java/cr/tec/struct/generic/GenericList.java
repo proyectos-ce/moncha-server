@@ -166,6 +166,10 @@ public class GenericList<T> implements Iterable<T>, Serializable, Cloneable {
 		}
 	}
 
+	public int getLength() {
+		return lenght;
+	}
+
 	public int size() {
 		return lenght;
 	}

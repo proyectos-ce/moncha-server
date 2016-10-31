@@ -67,7 +67,7 @@ public class Order implements Comparable<Order>{
 	@Override
 	public String toString(){
 		String result = "";
-		for(int i=0; i<this.getDishes().getLenght(); i++){
+		for(int i=0; i<this.getDishes().getLength(); i++){
 			result += this.getDishes().getAt(i).toString() + "\n";
 		}
 		return result;

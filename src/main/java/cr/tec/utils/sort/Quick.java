@@ -8,7 +8,7 @@ public class Quick {
 	
 	public static void quickSort(GenericList<Ingredient> list){
 		int izq = 0;
-		int der = list.getLenght()-1;
+		int der = list.getLength()-1;
 		quickSortAux(list, izq, der);
 		
 	}
@@ -31,7 +31,7 @@ public class Quick {
 		if(izq<j-1)quickSortAux(list, izq, j-1);
 		if(j+1 < der)quickSortAux(list, j+1, der);
 		
-		for(int k = 0; k<list.getLenght(); k++){
+		for(int k = 0; k<list.getLength(); k++){
 			list.getAt(k).getData().setId(k+1);
 		}	
 	}

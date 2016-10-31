@@ -7,7 +7,7 @@ import cr.tec.struct.generic.GenericList;
 public class Radix {
 	public static void radixSort(GenericList<Ingredient> list){
 			int w =0;
-	        int n = list.getLenght();
+	        int n = list.getLength();
 	        int R = 256;
 
 	        /////SEARCHES FOR THE STRING WITH MAJOR AMOUNT OF CHARACTERS

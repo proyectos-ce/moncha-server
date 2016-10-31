@@ -5,7 +5,7 @@ import cr.tec.struct.generic.GenericList;
 public class BinarySearch {
 	public static int binarySearch(GenericList<Ingredient> list, String data){
 		int minIndex = 0;
-		int maxIndex =  list.getLenght()-1;
+		int maxIndex =  list.getLength()-1;
 		while(maxIndex >=minIndex){
 			int middle = (minIndex + maxIndex)/2;
 			if(list.getAt(middle).getData().getName().compareTo(data) < 0){
