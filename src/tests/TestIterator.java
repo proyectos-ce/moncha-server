@@ -1,33 +1,31 @@
 package tests;
 import java.util.Iterator;
 
+import Food.Dish;
 import Structures.*;
 public class TestIterator {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		int item1 = 1;
-		int item2 = 2;
-		int item3 = 3;
-		int item4 = 4;
-		int item5 = 5;
-		int item6 = 6;
-		int item7 = 7;
-		int item8 = 8;
-		int item9 = 9;
-		GenericList<Integer> newList= new GenericList<>();
-		newList.addLast(item1);
-		newList.addLast(item2);
-		newList.addLast(item3);
-		newList.addLast(item4);
-		newList.addLast(item5);
-		newList.addLast(item6);
-		newList.addLast(item7);
-		newList.addLast(item8);
-		newList.addLast(item9);
-		Iterator<Integer> myIterator =  newList.iterator();
+		
+		Dish d1 = new Dish("Papas");
+		Dish d2 = new Dish("Fresas");
+		Dish d3 = new Dish("Uvas");
+		Dish d4 = new Dish("Chocolate");
+		Dish d5 = new Dish("Brownie");
+		Dish d6 = new Dish("Banano");
+		
+		GenericList<Dish> newList= new GenericList<>();
+		newList.addLast(d1);
+		newList.addLast(d2);
+		newList.addLast(d3);
+		newList.addLast(d4);
+		newList.addLast(d5);
+		newList.addLast(d6);
+
+		Iterator<Dish> myIterator =  newList.iterator();
 		while(myIterator.hasNext()){
-			System.out.println(myIterator.next());
+			System.out.println(myIterator.next().getName());
 		}
 	}
 
