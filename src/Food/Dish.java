@@ -1,10 +1,16 @@
 package Food;
 
+import java.io.Serializable;
+
 import Structures.FoodType;
 import Structures.GenericList;
 import Structures.RecipeStep;
 
-public class Dish {
+public class Dish implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1507095039624789381L;
 	private double price;
 	private int nutValue, prepTime;
 	private  GenericList<Ingredient> ingredientsList;

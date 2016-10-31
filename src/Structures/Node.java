@@ -1,6 +1,12 @@
 package Structures;
 
-public class Node<T> {
+import java.io.Serializable;
+
+public class Node<T> implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4724696687378023792L;
 	private T data;
 	private Node<T> next;
 

@@ -1,10 +1,14 @@
 package Structures;
 
 
+import java.io.Serializable;
 import java.util.Iterator;
-import java.util.function.Consumer;
 
-public class GenericList<T> implements Iterable<T> {
+public class GenericList<T> implements Iterable<T>, Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -6452243518230709681L;
 	private Node<T> head;
 	private int lenght;
 	// private Iterator<T> it;
@@ -198,13 +202,4 @@ public class GenericList<T> implements Iterable<T> {
 		return newItetaror;
 	}
 
-	@Override
-	public void forEach(Consumer<? super T> action) {
-		// TODO Auto-generated method stub
-	}
-
-	public void addLast(Node<Order> newOrder) {
-		// TODO Auto-generated method stub
-		
-	}
 }

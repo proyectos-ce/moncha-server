@@ -1,5 +1,6 @@
 package Structures;
 
+import java.util.List;
 import java.util.NoSuchElementException;
 
 
@@ -8,7 +9,7 @@ import java.util.NoSuchElementException;
  *
  * @param <T>
  */
-public class SimpleIterator<T> implements java.util.Iterator<T>{
+public class SimpleIterator<T> implements java.util.Iterator<T>, List<T>{
 	private Node<T> head;
 	private Node<T> current;
 

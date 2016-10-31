@@ -1,8 +1,14 @@
 package Structures;
 
+import java.io.Serializable;
+
 import Food.Dish;
 
-public class Order implements Comparable<Order>{
+public class Order implements Serializable, Comparable<Order>{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2524583301959818938L;
 	private OrderType orderPriority;
 	private Table table;
 	private GenericList<Dish> dishes;

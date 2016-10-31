@@ -1,8 +1,14 @@
 package Food;
 
+import java.io.Serializable;
+
 import Structures.FoodType;
 
-public class Ingredient{
+public class Ingredient implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 8476335963677373553L;
 	private FoodType type;
 	private String name;
 	private int quantity, id;
