@@ -1,4 +1,6 @@
 package tests;
+import java.util.Iterator;
+
 import Structures.*;
 public class TestIterator {
 
@@ -13,18 +15,17 @@ public class TestIterator {
 		int item7 = 7;
 		int item8 = 8;
 		int item9 = 9;
-		
-		SimpleIterator<Integer> myIterator = new SimpleIterator<>();
-		myIterator.add(item1);
-		myIterator.add(item2);
-		myIterator.add(item3);
-		myIterator.add(item4);
-		myIterator.add(item5);
-		myIterator.add(item6);
-		myIterator.add(item7);
-		myIterator.add(item8);
-		myIterator.add(item9);
-		
+		GenericList<Integer> newList= new GenericList<>();
+		newList.addLast(item1);
+		newList.addLast(item2);
+		newList.addLast(item3);
+		newList.addLast(item4);
+		newList.addLast(item5);
+		newList.addLast(item6);
+		newList.addLast(item7);
+		newList.addLast(item8);
+		newList.addLast(item9);
+		Iterator<Integer> myIterator =  newList.iterator();
 		while(myIterator.hasNext()){
 			System.out.println(myIterator.next());
 		}

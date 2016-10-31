@@ -1,6 +1,5 @@
 package Structures;
 
-import Structures.Node;
 
 import java.util.Iterator;
 import java.util.function.Consumer;
@@ -195,13 +194,17 @@ public class GenericList<T> implements Iterable<T> {
 
 	@Override
 	public Iterator<T> iterator() {
-		
-		// TODO Auto-generated method stub
-		return null;
+		Iterator<T> newItetaror = new SimpleIterator<>(this);
+		return newItetaror;
 	}
 
 	@Override
 	public void forEach(Consumer<? super T> action) {
 		// TODO Auto-generated method stub
+	}
+
+	public void addLast(Node<Order> newOrder) {
+		// TODO Auto-generated method stub
+		
 	}
 }
