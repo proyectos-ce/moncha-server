@@ -106,10 +106,9 @@ public class MainPruebas {
 		d.addLast(n3);
 		d.addLast(n2);
 		d.addLast(n1);
+		System.out.println(d.getLast().getData().getName());
 		
-		while(iter.hasNext()){
-			System.out.println(iter.next());
-		}
+
 		
 
 
