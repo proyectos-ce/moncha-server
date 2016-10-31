@@ -21,7 +21,7 @@ public class IngredientsApi {
 
 
 	@GET
-	@Secured
+	@Secured({Role.CHEF})
 	@Produces({MediaType.APPLICATION_JSON})
 	public LinkedList<Ingredient> getIngredients() {
 		try {
@@ -47,7 +47,7 @@ public class IngredientsApi {
 	}
 
 	@POST
-	@Secured
+	@Secured({Role.CHEF})
 	@Produces({MediaType.APPLICATION_JSON})
 	@Consumes({MediaType.APPLICATION_JSON})
 	public Message createIngredient(Ingredient newIngredient) {
@@ -75,7 +75,7 @@ public class IngredientsApi {
 	}
 
 	@DELETE
-	@Secured
+	@Secured({Role.CHEF})
 	@Path("{id}")
 	@Produces({MediaType.APPLICATION_JSON})
 	public Message deleteIngredient(@PathParam("id") int id) throws FileNotFoundException {
@@ -91,7 +91,7 @@ public class IngredientsApi {
 	}
 
 	@POST
-	@Secured
+	@Secured({Role.CHEF})
 	@Path("{id}")
 	@Produces({MediaType.APPLICATION_JSON})
 	public Message updateIngredient(Ingredient updatedIngredient, @PathParam("id") int id) throws FileNotFoundException {
