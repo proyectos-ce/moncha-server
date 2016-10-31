@@ -1,5 +1,6 @@
 package cr.tec.rest;
 
+import cr.tec.struct.Message;
 import cr.tec.struct.User;
 import cr.tec.utils.security.Secured;
 import cr.tec.utils.security.TokenProvider;
@@ -12,6 +13,7 @@ import javax.ws.rs.Priorities;
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.container.ContainerRequestFilter;
 import javax.ws.rs.core.HttpHeaders;
+import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.Provider;
 import java.io.IOException;
@@ -45,13 +47,10 @@ public class AuthFilter implements ContainerRequestFilter {
 			userData = TokenProvider.verifyToken(token);
 			// Validate the token
 			if (userData == null) {
-				requestContext.abortWith(
-						Response.status(Response.Status.UNAUTHORIZED).build());
+				requestContext.abortWith(Response.status(Response.Status.UNAUTHORIZED).entity(new Message("error", "HARAMBE ERROR: The token is invalid.")).type(MediaType.APPLICATION_JSON).build());
 			}
-
 		} catch (Exception e) {
-			requestContext.abortWith(
-					Response.status(Response.Status.UNAUTHORIZED).build());
+				requestContext.abortWith(Response.status(Response.Status.UNAUTHORIZED).entity(new Message("error", "HARAMBE ERROR: An error occured while decoding the token.")).type(MediaType.APPLICATION_JSON).build());
 			return;
 		}
 
