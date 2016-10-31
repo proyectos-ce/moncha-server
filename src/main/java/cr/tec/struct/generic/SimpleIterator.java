@@ -1,12 +1,16 @@
 package cr.tec.struct.generic;
 import java.util.NoSuchElementException;
 
+import java.util.List;
+import java.util.NoSuchElementException;
+
+
 /**
  * @author gsegura96
  *
  * @param <T>
  */
-public class SimpleIterator<T> implements java.util.Iterator<T>{
+public class SimpleIterator<T> implements java.util.Iterator<T> {
 	private Node<T> head;
 	private Node<T> current;
 

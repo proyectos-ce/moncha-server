@@ -1,8 +1,12 @@
 package cr.tec.struct.generic;
 
-public class Node<T> {
+import java.io.Serializable;
+
+public class Node<T> implements Serializable {
 	private T data;
 	private Node<T> next;
+	private static final long serialVersionUID = -6452243518230709681L;
+
 
 	public Node() {
 		this.data = null;

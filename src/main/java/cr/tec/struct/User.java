@@ -7,6 +7,9 @@ import java.io.Serializable;
  */
 public class User implements Serializable {
 
+	private String lid;
+	private String name;
+	private String avatar;
 	private int table;
 	private OrderType orderType;
 	private Role role;
@@ -24,6 +27,30 @@ public class User implements Serializable {
 	public User(int table, int type) {
 		this.table = table;
 		this.orderType = OrderType.fromInt(type);
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getLid() {
+		return lid;
+	}
+
+	public void setLid(String lid) {
+		this.lid = lid;
+	}
+
+	public String getAvatar() {
+		return avatar;
+	}
+
+	public void setAvatar(String avatar) {
+		this.avatar = avatar;
 	}
 
 	public Role getRole() {

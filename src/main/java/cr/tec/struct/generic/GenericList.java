@@ -1,14 +1,14 @@
 package cr.tec.struct.generic;
 
 
-import cr.tec.struct.Order;
-
 import java.io.Serializable;
-import java.util.AbstractSequentialList;
 import java.util.Iterator;
-import java.util.function.Consumer;
 
-public class GenericList<T> implements Iterable<T>, Serializable, Cloneable {
+public class GenericList<T> implements Iterable<T>, Serializable{
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = -6452243518230709681L;
 	private Node<T> head;
 	private int lenght;
 	// private Iterator<T> it;
@@ -166,11 +166,11 @@ public class GenericList<T> implements Iterable<T>, Serializable, Cloneable {
 		}
 	}
 
-	public int getLength() {
+	public int getLenght() {
 		return lenght;
 	}
 
-	public int size() {
+	public int getLength() {
 		return lenght;
 	}
 
@@ -189,7 +189,7 @@ public class GenericList<T> implements Iterable<T>, Serializable, Cloneable {
 	@Override
 	public String toString() {
 		String result = "";
-		for (int i = 0; i < size(); i++) {
+		for (int i = 0; i < getLenght(); i++) {
 			result += ((i + 1) + ". " + getAt(i).getData().toString());
 		}
 		return result;
@@ -215,13 +215,4 @@ public class GenericList<T> implements Iterable<T>, Serializable, Cloneable {
 		return newItetaror;
 	}
 
-	@Override
-	public void forEach(Consumer<? super T> action) {
-		// TODO Auto-generated method stub
-	}
-
-	public void addLast(Node<Order> newOrder) {
-		// TODO Auto-generated method stub
-
-	}
 }

@@ -27,9 +27,9 @@ public class AuthApi {
 	@Path("/chef")
 	@Produces({MediaType.TEXT_PLAIN})
 	@Consumes({MediaType.APPLICATION_JSON})
-	public String authChef() throws JoseException {
-		/* TODO: LOGIN DE CHEFS */
-		return null;
+	public String authChef(User meta) throws JoseException, JsonProcessingException {
+		meta.setRole(Role.CHEF);
+		return TokenProvider.issueToken(meta);
 
 	}
 	@POST
