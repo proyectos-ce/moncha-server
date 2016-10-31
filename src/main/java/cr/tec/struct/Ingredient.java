@@ -1,0 +1,61 @@
+package cr.tec.struct;
+
+/**
+ * Created by Jimena on 10/26/16.
+ */
+
+public class Ingredient{
+	private FoodType type;
+	private String name;
+	private int quantity, id;
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+	public Ingredient(FoodType type, String name, int quantity){
+		this.type=type;
+		this.name=name;
+		this.quantity=quantity;
+	}
+
+	public Ingredient(){
+
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+
+	public FoodType getType() {
+		return type;
+	}
+
+	public void setType(FoodType type) {
+		this.type = type;
+	}
+
+	@Override
+	public String toString() {
+		String result = "Name: " + getName() + "\nType: " + getType() +"\n" + "ID: " + getId() + "\n";
+		return result;
+	}
+
+}
