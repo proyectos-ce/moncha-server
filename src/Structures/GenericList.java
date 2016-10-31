@@ -107,6 +107,15 @@ public class GenericList<T> implements Iterable<T> {
 			System.out.println("Index out of range");
 		}
 	}
+	
+	public Node<T> getLast(){
+		if(this.head == null){
+			System.out.println("La lista esta vacia");
+			return null;
+		}else{
+			return getAt(this.lenght-1);
+		}
+	}
 
 	public void swap(int i, int j) {
 		if (i >= 0 && i < this.lenght && j >= 0 && j < this.lenght) {

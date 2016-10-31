@@ -36,7 +36,7 @@ public class Table {
 	}
 	
 	public void deleteDish(Dish dish){
-		this.order.de
+		this.order.deleteNode(dish);
 	}
 
 	
