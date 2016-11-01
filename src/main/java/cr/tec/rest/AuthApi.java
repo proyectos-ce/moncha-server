@@ -8,6 +8,7 @@ import org.jose4j.lang.JoseException;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
 
 /**
  * Created by joseph on 10/30/16.
@@ -18,20 +19,36 @@ public class AuthApi {
 	@Path("/client")
 	@Produces({MediaType.TEXT_PLAIN})
 	@Consumes({MediaType.APPLICATION_JSON})
-	public String authClient(User meta) throws JoseException, JsonProcessingException {
+	public Response authClient(User meta) throws JoseException, JsonProcessingException {
 		meta.setRole(Role.CLIENT);
-		return TokenProvider.issueToken(meta);
+		return Response.ok(TokenProvider.issueToken(meta)).header("Access-Control-Allow-Origin", "*").build();
+
 
 	}
+
+	@POST
+	@Path("/client")
+	public Response authClientCORS() {
+		return Response.ok().header("Access-Control-Allow-Origin", "*").build();
+	}
+
+
 	@POST
 	@Path("/chef")
 	@Produces({MediaType.TEXT_PLAIN})
 	@Consumes({MediaType.APPLICATION_JSON})
-	public String authChef(User meta) throws JoseException, JsonProcessingException {
+	public Response authChef(User meta) throws JoseException, JsonProcessingException {
 		meta.setRole(Role.CHEF);
-		return TokenProvider.issueToken(meta);
+		return Response.ok(TokenProvider.issueToken(meta)).header("Access-Control-Allow-Origin", "*").build();
 
 	}
+
+	@POST
+	@Path("/chef")
+	public Response authChefCORS() {
+		return Response.ok().header("Access-Control-Allow-Origin", "*").build();
+	}
+
 	@POST
 	@Path("/verify")
 	@Produces({MediaType.APPLICATION_JSON})
