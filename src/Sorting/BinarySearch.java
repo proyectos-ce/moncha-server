@@ -1,10 +1,13 @@
 package Sorting;
 
+import java.util.LinkedList;
+
 import Food.Ingredient;
 import Structures.GenericList;
 
 public class BinarySearch {
-	public static int binarySearch(GenericList<Ingredient> list, String data){
+	public static int binarySearch(LinkedList<Ingredient> inlist, String data){
+		GenericList<Ingredient> list = Converter.LLtoGL(inlist);
 		int minIndex = 0;
 		int maxIndex =  list.getLenght()-1;
 		while(maxIndex >=minIndex){

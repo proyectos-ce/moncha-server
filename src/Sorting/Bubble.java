@@ -1,10 +1,14 @@
 package Sorting;
 
+import java.util.LinkedList;
+import Sorting.Converter;
+
 import Food.Ingredient;
 import Structures.GenericList;
 
 public class Bubble {
-	public static <T> void bubbleSort(GenericList<Ingredient> list){
+	public static LinkedList<Ingredient> bubbleSort(LinkedList<Ingredient> inlist){
+		GenericList<Ingredient> list = Converter.LLtoGL(inlist);
 		int in, out;
 		for(out = list.getLenght(); out > 1; out--){
 			for(in = 0; in < out-1; in++){
@@ -17,6 +21,8 @@ public class Bubble {
 	for(int i = 0; i<list.getLenght(); i++){
 		list.getAt(i).getData().setId(i+41);
 	}
+	LinkedList<Ingredient> outlist= Converter.GLtoLL(list);
+	return outlist;
 	}
 
 }

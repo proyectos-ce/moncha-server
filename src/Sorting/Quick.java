@@ -1,17 +1,20 @@
 package Sorting;
 
+import java.util.LinkedList;
+
 import Food.Ingredient;
 import Structures.GenericList;
 
 public class Quick {
 	
-	public static void quickSort(GenericList<Ingredient> list){
+	public static LinkedList<Ingredient> quickSort(LinkedList<Ingredient> inlist){
+		GenericList<Ingredient> list = Converter.LLtoGL(inlist);
 		int izq = 0;
 		int der = list.getLenght()-1;
-		quickSortAux(list, izq, der);
+		return quickSortAux(list, izq, der);
 		
 	}
-	private static void quickSortAux(GenericList<Ingredient> list, int izq, int der){
+	private static LinkedList<Ingredient> quickSortAux(GenericList<Ingredient> list, int izq, int der){
 		String pivote = list.getAt(izq).getData().getName();
 		int i = izq;
 		int j = der;
@@ -32,6 +35,8 @@ public class Quick {
 		
 		for(int k = 0; k<list.getLenght(); k++){
 			list.getAt(k).getData().setId(k+1);
-		}	
+		}
+		LinkedList<Ingredient> outlist= Converter.GLtoLL(list);
+		return outlist;
 	}
 }

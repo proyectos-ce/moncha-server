@@ -1,10 +1,13 @@
 package Sorting;
 
+import java.util.LinkedList;
+
 import Food.Ingredient;
 import Structures.GenericList;
 
 public class Radix {
-	public static void radixSort(GenericList<Ingredient> list){
+	public static LinkedList<Ingredient> radixSort(LinkedList<Ingredient> inlist){
+			GenericList<Ingredient> list = Converter.LLtoGL(inlist);
 			int w =0;
 	        int n = list.getLenght();
 	        int R = 256;
@@ -72,6 +75,8 @@ public class Radix {
 	        for(int i = 0; i<n; i++){
 	        	list.getAt(i).getData().setId(i+61);
 	        }
+	        LinkedList<Ingredient> outlist= Converter.GLtoLL(list);
+			return outlist;
 	        
 	    }
 

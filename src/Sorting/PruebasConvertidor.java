@@ -13,8 +13,8 @@ public class PruebasConvertidor {
 		// TODO Auto-generated method stub
 		LinkedList<Ingredient> newll = new LinkedList<Ingredient>();
 		Ingredient i1 = new Ingredient(FoodType.fruits, "uvas", 99);
-		Ingredient i2 = new Ingredient(FoodType.fruits, "fresas", 99);
-		Ingredient i3 = new Ingredient(FoodType.fruits, "mangos", 99);
+		Ingredient i2 = new Ingredient(FoodType.fruits, "papaya", 99);
+		Ingredient i3 = new Ingredient(FoodType.fruits, "arroz", 99);
 		Ingredient i4 = new Ingredient(FoodType.fruits, "bananos", 99);
 		newll.add(i1);
 		newll.add(i2);
@@ -29,6 +29,9 @@ public class PruebasConvertidor {
 		
 		System.out.println(Converter.LLtoGL(newll));
 		System.out.println(Converter.GLtoLL(newgl));
+		
+		System.out.println(BinarySearch.binarySearch(Bubble.bubbleSort(newll), "papaya"));
+		
 		
 		
 
