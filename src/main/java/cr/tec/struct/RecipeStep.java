@@ -17,6 +17,8 @@ public class RecipeStep {
 
 	}
 
+	public RecipeStep() {}
+
 	public String getTitle() {
 		return title;
 	}
