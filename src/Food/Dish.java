@@ -35,7 +35,6 @@ public class Dish {
 		recipe.addLast(newStep);
 	}
 
-	
 	public double getPrice() {
 		return price;
 	}
