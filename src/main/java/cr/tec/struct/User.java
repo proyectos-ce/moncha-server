@@ -11,9 +11,10 @@ public class User implements Serializable {
 	private String name;
 	private String avatar;
 	private int table;
-	private OrderType orderType;
+private OrderType orderType;
 	private Role role;
 	private int id;
+	private String firebaseToken;
 
 	public User() {
 
@@ -27,6 +28,14 @@ public class User implements Serializable {
 	public User(int table, int type) {
 		this.table = table;
 		this.orderType = OrderType.fromInt(type);
+	}
+
+	public String getFirebaseToken() {
+		return firebaseToken;
+	}
+
+	public void setFirebaseToken(String firebaseToken) {
+		this.firebaseToken = firebaseToken;
 	}
 
 	public String getName() {
