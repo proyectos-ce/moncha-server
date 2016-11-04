@@ -7,27 +7,34 @@ import java.io.Serializable;
  */
 public class User implements Serializable {
 
+	private static int lastId = 0;
+
 	private String lid;
 	private String name;
 	private String avatar;
 	private int table;
-private OrderType orderType;
+	private OrderType type;
 	private Role role;
 	private int id;
 	private String firebaseToken;
 
 	public User() {
-
+		this.id = lastId + 1;
+		lastId++;
 	}
 
-	public User(int table, OrderType orderType) {
+	public User(int table, OrderType type) {
 		this.table = table;
-		this.orderType = orderType;
+		this.type = type;
+		this.id = lastId + 1;
+		lastId++;
 	}
 
 	public User(int table, int type) {
 		this.table = table;
-		this.orderType = OrderType.fromInt(type);
+		this.type = OrderType.fromInt(type);
+		this.id = lastId + 1;
+		lastId++;
 	}
 
 	public String getFirebaseToken() {
@@ -86,11 +93,11 @@ private OrderType orderType;
 		this.table = table;
 	}
 
-	public OrderType getOrderType() {
-		return orderType;
+	public OrderType getType() {
+		return type;
 	}
 
-	public void setOrderType(OrderType orderType) {
-		this.orderType = orderType;
+	public void setType(OrderType type) {
+		this.type = type;
 	}
 }

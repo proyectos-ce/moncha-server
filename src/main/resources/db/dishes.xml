@@ -1,0 +1,20 @@
+<dishes>
+    <dish>
+        <price>2500.0</price>
+        <nutValue>100</nutValue>
+        <prepTime>10</prepTime>
+        <ingredientsList/>
+        <recipe/>
+        <name>Papas fritas</name>
+        <id>1</id>
+    </dish>
+    <dish>
+        <price>5000.0</price>
+        <nutValue>300</nutValue>
+        <prepTime>30</prepTime>
+        <ingredientsList/>
+        <recipe/>
+        <name>Sopa azteca</name>
+        <id>2</id>
+    </dish>
+</dishes>
