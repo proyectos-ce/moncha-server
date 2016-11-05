@@ -4,12 +4,15 @@ import cr.tec.struct.generic.Node;
 import cr.tec.utils.Database;
 import cr.tec.utils.sort.BinarySearch;
 
+import javax.xml.crypto.Data;
 import java.util.LinkedList;
 
 /**
  * Created by joseph on 11/4/16.
  */
 public class OrderManager {
+	private static OrdersPriorityQueue queue = new OrdersPriorityQueue();
+
 	public static Message placeOrder(User user, LinkedList<Suborder> suborders) {
 		int tableId = user.getTable();
 		OrderType type = user.getType();
@@ -21,6 +24,7 @@ public class OrderManager {
 
 		Table table = TableList.get(tableId);
 		for (Suborder sub : suborders) {
+
 			price += Database.getDish(sub.getDishId()).getPrice() * sub.getQuantity();
 			Dish dish = Database.getDish(sub.getDishId());
 			if (dish == null) {
@@ -33,12 +37,30 @@ public class OrderManager {
 		}
 
 		Order order = new Order();
+
+
+		int i = 0;
+		for (Suborder sub : suborders) {
+			i++;
+			User chef = getAvailableChef();
+			if (chef == null) {
+				return new Message("error", "There are no chefs in the restaurant :(");
+			}
+			sub.setChef(chef.getId());
+			chef.getCurrentWorks().add(new Work(order.getId(), i));
+
+			sub.setName(Database.getDish(sub.getDishId()).getName());
+		}
+
 		order.setSuborders(suborders);
 		order.setTable(tableId);
 		order.setPrice(price);
 		order.setType(type);
 		order.setUser(user.getId());
 		table.getOrders().add(order);
+		//queue.addLast(order);
+
+
 		return new Message("ok", "Order added succesfully.");
 
 	}
@@ -61,9 +83,25 @@ public class OrderManager {
 
 	public static Order getOrder(int id) {
 		LinkedList<Order> orders = getAllOrders();
-
 		return BinarySearch.orderSearch(orders, id);
 
+	}
+
+	private static User getAvailableChef() {
+		int current = 999999;
+		User currentChef = null;
+		for (User user : UserList.getList()) {
+			if (user.getRole() != Role.CHEF) {
+				continue;
+			}
+
+			if (user.getCurrentWorks().size() < current) {
+				current = user.getCurrentWorks().size();
+				currentChef = user;
+			}
+		}
+
+		return currentChef;
 	}
 
 }

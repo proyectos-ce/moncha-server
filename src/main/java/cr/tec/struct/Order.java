@@ -13,7 +13,6 @@ public class Order implements Comparable<Order> {
 	private int table;
 	private int user;
 	private LinkedList<Suborder> suborders;
-	private String chef;
 	private int id;
 	private boolean completed;
 	private boolean delivered;
@@ -78,14 +77,6 @@ public class Order implements Comparable<Order> {
 
 	public void setSuborders(LinkedList<Suborder> suborders) {
 		this.suborders = suborders;
-	}
-
-	public String getChef() {
-		return chef;
-	}
-
-	public void setChef(String chef) {
-		this.chef = chef;
 	}
 
 	public int getId() {

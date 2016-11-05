@@ -1,6 +1,7 @@
 package cr.tec.struct;
 
 import java.io.Serializable;
+import java.util.LinkedList;
 
 /**
  * Created by joseph on 10/30/16.
@@ -16,6 +17,7 @@ public class User implements Serializable {
 	private OrderType type;
 	private Role role;
 	private int id;
+	private LinkedList<Work> currentWorks = new LinkedList<>();
 	private String firebaseToken;
 
 	public User() {
@@ -99,5 +101,13 @@ public class User implements Serializable {
 
 	public void setType(OrderType type) {
 		this.type = type;
+	}
+
+	public LinkedList<Work> getCurrentWorks() {
+		return currentWorks;
+	}
+
+	public void setCurrentWorks(LinkedList<Work> currentWorks) {
+		this.currentWorks = currentWorks;
 	}
 }

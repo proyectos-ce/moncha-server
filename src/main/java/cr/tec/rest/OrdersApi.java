@@ -37,6 +37,29 @@ public class OrdersApi {
 		return OrderManager.getAllOrders();
 	}
 
+	@GET
+	@Path("my")
+	@Secured
+	@Produces({MediaType.APPLICATION_JSON})
+	public Order getMyOrder() {
+		LinkedList<Order> orders = OrderManager.getAllOrders();
+		for (Order order:orders    ) {
+			if (order.getUser() == getUser().getUserData().getId()) {
+				return order;
+			}
+		}
+
+		return null;
+	}
+
+	@GET
+	@Path("mine")
+	@Secured
+	@Produces({MediaType.APPLICATION_JSON})
+	public LinkedList<Work> getMyOrders() {
+		return UserList.get(getUser().getUserData().getId()).getCurrentWorks();
+	}
+
 
 	@GET
 	@Path("{id}")
@@ -68,6 +91,13 @@ public class OrdersApi {
 			if (!suborder.isCompleted()) {
 				orderCompleted = false;
 			}
+		}
+
+		for (Work work : getUser().getUserData().getCurrentWorks() ) {
+			if (work.getOrder() == id && work.getSuborder() == sub) {
+				getUser().getUserData().getCurrentWorks().remove(work);
+			}
+
 		}
 
 		if (orderCompleted) {
