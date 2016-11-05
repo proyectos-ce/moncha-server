@@ -24,7 +24,7 @@ public class OrderManager {
 			}
 
 			for (RecipeStep step : dish.getRecipe()) {
-				sub.getSteps().put(step, Boolean.FALSE);
+				sub.getSteps().add(new StepStatus(step));
 			}
 		}
 
@@ -32,6 +32,7 @@ public class OrderManager {
 		order.setSuborders(suborders);
 		order.setTable(tableId);
 		order.setType(type);
+		order.setUser(user.getId());
 		table.getOrders().add(order);
 		return new Message("ok", "Order added succesfully.");
 

@@ -3,6 +3,7 @@ package cr.tec.rest;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import cr.tec.struct.Role;
 import cr.tec.struct.User;
+import cr.tec.struct.UserList;
 import cr.tec.utils.security.TokenProvider;
 import org.jose4j.lang.JoseException;
 
@@ -21,6 +22,7 @@ public class AuthApi {
 	@Consumes({MediaType.APPLICATION_JSON})
 	public Response authClient(User meta) throws JoseException, JsonProcessingException {
 		meta.setRole(Role.CLIENT);
+		UserList.add(meta);
 		return Response.ok(TokenProvider.issueToken(meta)).header("Access-Control-Allow-Origin", "*").build();
 
 

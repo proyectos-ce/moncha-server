@@ -8,18 +8,44 @@ import java.util.LinkedList;
 
 
 public class Order implements Comparable<Order> {
+	private static int lastId = 0;
 	private OrderType type;
 	private int table;
+	private int user;
 	private LinkedList<Suborder> suborders;
 	private String chef;
 	private int id;
-
-	private static int lastId = 0;
-
+	private boolean completed;
+	private boolean delivered;
+	private boolean payed;
 
 	public Order() {
 		this.id = lastId + 1;
 		lastId++;
+	}
+
+	public boolean isCompleted() {
+		return completed;
+	}
+
+	public void setCompleted(boolean completed) {
+		this.completed = completed;
+	}
+
+	public boolean isDelivered() {
+		return delivered;
+	}
+
+	public void setDelivered(boolean delivered) {
+		this.delivered = delivered;
+	}
+
+	public boolean isPayed() {
+		return payed;
+	}
+
+	public void setPayed(boolean payed) {
+		this.payed = payed;
 	}
 
 	public OrderType getType() {
@@ -67,5 +93,13 @@ public class Order implements Comparable<Order> {
 
 	public void setId(int id) {
 		this.id = id;
+	}
+
+	public int getUser() {
+		return user;
+	}
+
+	public void setUser(int user) {
+		this.user = user;
 	}
 }

@@ -1,20 +1,16 @@
 package cr.tec.struct;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
-import java.util.HashMap;
 import java.util.LinkedList;
 
 /**
  * Created by joseph on 11/3/16.
  */
-@JsonIgnoreProperties({"steps"})
 public class Suborder {
 	private int dishId;
 	private String comment;
 	private int quantity;
 	private boolean completed;
-	private HashMap<RecipeStep, Boolean> steps = new HashMap<>();
+	private LinkedList<StepStatus> steps = new LinkedList<>();
 
 	public Suborder() {
 	}
@@ -43,7 +39,7 @@ public class Suborder {
 		this.quantity = quantity;
 	}
 
-	public HashMap<RecipeStep, Boolean> getSteps() {
+	public LinkedList<StepStatus> getSteps() {
 		return steps;
 	}
 

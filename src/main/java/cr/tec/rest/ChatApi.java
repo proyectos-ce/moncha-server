@@ -1,6 +1,7 @@
 package cr.tec.rest;
 
 import cr.tec.struct.Message;
+import cr.tec.utils.FirebaseManager;
 import cr.tec.utils.security.JWTPrincipal;
 import cr.tec.utils.security.Secured;
 
@@ -27,7 +28,6 @@ import java.util.concurrent.CompletableFuture;
 @Path( "/chat" )
 public class ChatApi {
 
-	private static String FCM_API_KEY = "AIzaSyCVjZwj4FRbc4SIcZnqLTyiYZfQciezgzA";
 
 	@Context
 	protected SecurityContext securityContext;
@@ -38,25 +38,8 @@ public class ChatApi {
 	@Secured
 	public Message postMessage(String msg) throws IOException {
 
-		HttpClient client = HttpClientBuilder.create().build();
-		HttpPost post = new HttpPost("https://fcm.googleapis.com/fcm/send");
-		post.setHeader("Content-type", "application/json");
-		post.setHeader("Authorization", "key=" + FCM_API_KEY);
-		JSONObject message = new JSONObject();
-		message.put("to", "/topics/chat");
-		message.put("priority", "high");
-		JSONObject notification = new JSONObject();
-		notification.put("title", "chat");
-		notification.put("body", msg);
-		message.put("notification", notification);
-		JSONObject data = new JSONObject();
-		data.put("name", getUser().getUserData().getName());
-		data.put("avatar", getUser().getUserData().getAvatar());
-		message.put("data", data);
-		post.setEntity(new StringEntity(message.toString(), "UTF-8"));
-		HttpResponse response = client.execute(post);
+		return FirebaseManager.postChat(msg, getUser().getUserData());
 
-		return new Message("firebase", response.toString());
 	}
 
 	private JWTPrincipal getUser() {
