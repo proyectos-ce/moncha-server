@@ -94,7 +94,7 @@ public class OrdersApi {
 		return OrderManager.getOrder(id).getSuborders().get(sub - 1);
 	}
 
-	@GET
+	@POST
 	@Path("{id}/suborders/")
 	@Consumes({MediaType.APPLICATION_JSON})
 	@Produces({MediaType.APPLICATION_JSON})

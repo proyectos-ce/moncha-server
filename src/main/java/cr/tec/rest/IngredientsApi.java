@@ -1,11 +1,12 @@
 package cr.tec.rest;
 
+import com.sun.research.ws.wadl.Link;
 import cr.tec.struct.Ingredient;
 import cr.tec.struct.Message;
 import cr.tec.struct.Role;
 import cr.tec.utils.Database;
 import cr.tec.utils.security.Secured;
-import cr.tec.utils.sort.BinarySearch;
+import cr.tec.utils.sort.*;
 
 import javax.annotation.security.RolesAllowed;
 import javax.ws.rs.*;
@@ -13,6 +14,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.io.FileNotFoundException;
 import java.util.LinkedList;
+import java.util.Objects;
 
 /**
  * Created by joseph on 10/29/16.
@@ -22,7 +24,7 @@ public class IngredientsApi {
 
 
 	@GET
-	@Secured({Role.CHEF})
+	@Secured()
 	@Produces({MediaType.APPLICATION_JSON})
 	public LinkedList<Ingredient> getIngredients() {
 		try {
@@ -34,7 +36,45 @@ public class IngredientsApi {
 	}
 
 	@GET
-	@Secured({Role.CHEF})
+	@Path("/type/{type}")
+	@Secured()
+	@Produces({MediaType.APPLICATION_JSON})
+	public LinkedList<Ingredient> getIngredients(@PathParam("type") String type) {
+		LinkedList<Ingredient> list;
+		LinkedList<Ingredient> finalList = new LinkedList<>();
+		try {
+			list = Database.getIngredients();
+		} catch (Exception e) {
+			// Regresa lista vacía en lugar de error si no hay Ingredients
+			return new LinkedList<Ingredient>();
+		}
+
+		for (Ingredient item : list) {
+			if (Objects.equals(item.getType().toString().toLowerCase(), type.toLowerCase().trim())) {
+				finalList.add(item);
+			}
+		}
+
+		if (Objects.equals(type, "vegetable")) {
+			return Shell.shellSort(finalList);
+		} else if (Objects.equals(type, "meat")) {
+			return Insertion.insertionSort(finalList);
+		} else if (Objects.equals(type, "fruits")) {
+			return Quick.quickSort(finalList);
+		} else if (Objects.equals(type, "grains")) {
+			return Radix.radixSort(finalList);
+		} else if (Objects.equals(type, "milky")) {
+			return Bubble.bubbleSort(finalList);
+		}
+
+		return null;
+
+
+
+	}
+
+	@GET
+	@Secured()
 	@Path("{id}")
 	@Produces("application/json")
 	public Response getIngredient(@PathParam("id") int id) {
@@ -48,7 +88,7 @@ public class IngredientsApi {
 	}
 
 	@POST
-	@Secured({Role.CHEF})
+	@Secured
 	@Produces({MediaType.APPLICATION_JSON})
 	@Consumes({MediaType.APPLICATION_JSON})
 	public Message createIngredient(Ingredient newIngredient) {
@@ -76,7 +116,7 @@ public class IngredientsApi {
 	}
 
 	@DELETE
-	@Secured({Role.CHEF})
+	@Secured()
 	@Path("{id}")
 	@Produces({MediaType.APPLICATION_JSON})
 	public Message deleteIngredient(@PathParam("id") int id) throws FileNotFoundException {
@@ -92,7 +132,7 @@ public class IngredientsApi {
 	}
 
 	@POST
-	@Secured({Role.CHEF})
+	@Secured()
 	@Path("{id}")
 	@Produces({MediaType.APPLICATION_JSON})
 	public Message updateIngredient(Ingredient updatedIngredient, @PathParam("id") int id) throws FileNotFoundException {
