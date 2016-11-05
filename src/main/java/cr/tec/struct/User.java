@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 /**
  * Created by joseph on 10/30/16.
+ * Class User that involves the people, wheter it is a client or a chef
  */
 public class User implements Serializable {
 

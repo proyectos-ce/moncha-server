@@ -7,8 +7,15 @@ import java.util.LinkedList;
 
 /**
  * Created by joseph on 11/4/16.
+ * Class that makes all the work related to the orders
  */
 public class OrderManager {
+/**
+ * Creates a new order that includes all the suborders
+ * @param user client that asked for the order
+ * @param suborders parts of the main order of the table
+ * @return
+ */
 	public static Message placeOrder(User user, LinkedList<Suborder> suborders) {
 		int tableId = user.getTable();
 		OrderType type = user.getType();
@@ -39,7 +46,10 @@ public class OrderManager {
 	}
 
 
-
+/**
+ * 
+ * @return all the orders that are available
+ */
 	public static LinkedList<Order> getAllOrders() {
 		LinkedList<Order> orderList = new LinkedList<>();
 
@@ -53,7 +63,11 @@ public class OrderManager {
 
 		return orderList;
 	}
-
+/**
+ * 
+ * @param id identification of the order
+ * @return the specific order that has been requested
+ */
 	public static Order getOrder(int id) {
 		LinkedList<Order> orders = getAllOrders();
 		for (Order order : orders) {

@@ -4,7 +4,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by joseph on 10/26/16.
+ * 
+ * @author Jimena, Joseph
+ *Enum that contains the category of the orders that are being made
  */
 public enum OrderType {
 	Platinum(1), Gold(2), Bronze(3);

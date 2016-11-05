@@ -4,6 +4,7 @@ import java.util.LinkedList;
 
 /**
  * Created by joseph on 11/3/16.
+ * Class Suborder handles each kind of Dish in a separate suborder  to verify if it is completes and to distribute it among the chefs
  */
 public class Suborder {
 	private int dishId;

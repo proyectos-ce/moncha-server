@@ -2,6 +2,7 @@ package cr.tec.struct;
 
 /**
  * Created by joseph on 11/4/16.
+ * Class made for verifying the status of the steps of each recipe
  */
 public class StepStatus {
 	private RecipeStep step;
