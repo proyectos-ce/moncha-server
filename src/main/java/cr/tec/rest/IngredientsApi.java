@@ -102,6 +102,7 @@ public class IngredientsApi {
 				oldIngredient.setName(updatedIngredient.getName());
 				oldIngredient.setQuantity(updatedIngredient.getQuantity());
 				oldIngredient.setType(updatedIngredient.getType());
+
 				Database.saveIngredients(ingredientList);
 				return new Message("ok", "Ingredient updated successfully.");
 			}
