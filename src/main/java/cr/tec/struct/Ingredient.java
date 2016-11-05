@@ -3,7 +3,11 @@ package cr.tec.struct;
 /**
  * Created by Jimena on 10/26/16.
  */
-
+/**
+ * 
+ * @author Jimena
+ *Main class Ingredient
+ */
 public class Ingredient{
 	private FoodType type;
 	private String name;
@@ -16,7 +20,12 @@ public class Ingredient{
 	public void setQuantity(int quantity) {
 		this.quantity = quantity;
 	}
-
+/**
+ * Constructor that takes the type, name and quantity of the ingredient object
+ * @param type the kind of ingredient
+ * @param name the name of the ingredient
+ * @param quantity the quantity of the ingredient in the dish
+ */
 	public Ingredient(FoodType type, String name, int quantity){
 		this.type=type;
 		this.name=name;
