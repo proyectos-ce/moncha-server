@@ -5,13 +5,6 @@ import cr.tec.utils.FirebaseManager;
 import cr.tec.utils.security.JWTPrincipal;
 import cr.tec.utils.security.Secured;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.HttpClientBuilder;
-import org.jose4j.json.internal.json_simple.JSONObject;
-
 import javax.ws.rs.Consumes;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
@@ -20,7 +13,6 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.SecurityContext;
 import java.io.IOException;
-import java.util.concurrent.CompletableFuture;
 
 /**
  * Created by joseph on 11/4/16.

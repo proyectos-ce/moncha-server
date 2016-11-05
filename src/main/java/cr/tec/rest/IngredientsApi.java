@@ -5,6 +5,7 @@ import cr.tec.struct.Message;
 import cr.tec.struct.Role;
 import cr.tec.utils.Database;
 import cr.tec.utils.security.Secured;
+import cr.tec.utils.sort.BinarySearch;
 
 import javax.annotation.security.RolesAllowed;
 import javax.ws.rs.*;
@@ -38,12 +39,12 @@ public class IngredientsApi {
 	@Produces("application/json")
 	public Response getIngredient(@PathParam("id") int id) {
 		LinkedList<Ingredient> ingredientList = Database.getIngredients();
-		for (Ingredient item : ingredientList) {
-			if (item.getId() == id) {
-				return Response.ok(item).build();
-			}
+		Ingredient result = BinarySearch.ingredientSearch(ingredientList, id);
+		if (result != null) {
+			return Response.ok(result).build();
+		} else {
+			return Response.status(Response.Status.NOT_FOUND).entity(new Message("error", "Ingredient not found.")).build();
 		}
-		return Response.status(Response.Status.NOT_FOUND).entity(new Message("error", "Ingredient not found.")).build();
 	}
 
 	@POST

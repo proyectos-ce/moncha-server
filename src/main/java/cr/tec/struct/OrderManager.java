@@ -2,6 +2,7 @@ package cr.tec.struct;
 
 import cr.tec.struct.generic.Node;
 import cr.tec.utils.Database;
+import cr.tec.utils.sort.BinarySearch;
 
 import java.util.LinkedList;
 
@@ -56,12 +57,8 @@ public class OrderManager {
 
 	public static Order getOrder(int id) {
 		LinkedList<Order> orders = getAllOrders();
-		for (Order order : orders) {
-			if (order.getId() == id)
-				return order;
-		}
 
-		return null;
+		return BinarySearch.orderSearch(orders, id);
 
 	}
 

@@ -2,23 +2,61 @@ package cr.tec.utils.sort;
 import cr.tec.struct.*;
 import cr.tec.struct.generic.GenericList;
 
+import java.util.LinkedList;
+
 public class BinarySearch {
-	public static int binarySearch(GenericList<Ingredient> list, String data){
+	public static Ingredient ingredientSearch(LinkedList<Ingredient> list, int data){
 		int minIndex = 0;
-		int maxIndex =  list.getLength()-1;
+		int maxIndex =  list.size();
 		while(maxIndex >=minIndex){
 			int middle = (minIndex + maxIndex)/2;
-			if(list.getAt(middle).getData().getName().compareTo(data) < 0){
+			if(list.get(middle).getId() - data < 0){
 				minIndex = middle +1;
-			}else  if(list.getAt(middle).getData().getName().compareTo(data) > 0){
+			} else if (list.get(middle).getId() - data > 0){
 				maxIndex = middle-1;
-			}else{
-				return middle;
+			} else{
+				return list.get(middle);
 			}
 			
 		}
-		return -1;
+		return null;
 		
+	}
+
+	public static Dish dishSearch(LinkedList<Dish> list, int data){
+		int minIndex = 0;
+		int maxIndex =  list.size();
+		while(maxIndex >=minIndex){
+			int middle = (minIndex + maxIndex)/2;
+			if(list.get(middle).getId() - data < 0){
+				minIndex = middle +1;
+			} else if (list.get(middle).getId() - data > 0){
+				maxIndex = middle-1;
+			} else{
+				return list.get(middle);
+			}
+
+		}
+		return null;
+
+	}
+
+	public static Order orderSearch(LinkedList<Order> list, int data){
+		int minIndex = 0;
+		int maxIndex =  list.size();
+		while(maxIndex >=minIndex){
+			int middle = (minIndex + maxIndex)/2;
+			if(list.get(middle).getId() - data < 0){
+				minIndex = middle +1;
+			} else if (list.get(middle).getId() - data > 0){
+				maxIndex = middle - 1;
+			} else{
+				return list.get(middle);
+			}
+
+		}
+		return null;
+
 	}
 
 }
