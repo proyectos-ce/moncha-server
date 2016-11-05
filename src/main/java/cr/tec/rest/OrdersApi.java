@@ -43,12 +43,31 @@ public class OrdersApi {
 	@Produces({MediaType.APPLICATION_JSON})
 	public Order getMyOrder() {
 		LinkedList<Order> orders = OrderManager.getAllOrders();
-		for (Order order:orders    ) {
+		for (Order order:orders) {
 			if (order.getUser() == getUser().getUserData().getId()) {
 				return order;
 			}
 		}
 
+		return null;
+	}
+
+	@POST
+	@Path("my")
+	@Secured
+	@Consumes({MediaType.APPLICATION_JSON})
+	@Produces({MediaType.APPLICATION_JSON})
+	public Message addMySuborder(Suborder sub) {
+		LinkedList<Order> orders = OrderManager.getAllOrders();
+		for (Order order:orders) {
+			System.out.println(order.getUser());
+			System.out.println("Imprimir orderr");
+			System.out.println(getUser().getUserData().getId());
+			System.out.println("imprimi udata");
+			if (order.getUser() == getUser().getUserData().getId()) {
+				return OrderManager.addSuborder(order.getId(), sub);
+			}
+		}
 		return null;
 	}
 
@@ -73,6 +92,14 @@ public class OrdersApi {
 	@Produces({MediaType.APPLICATION_JSON})
 	public Suborder getSuborder(@PathParam("id") int id, @PathParam("sub") int sub) {
 		return OrderManager.getOrder(id).getSuborders().get(sub - 1);
+	}
+
+	@GET
+	@Path("{id}/suborders/")
+	@Consumes({MediaType.APPLICATION_JSON})
+	@Produces({MediaType.APPLICATION_JSON})
+	public Message addSuborder(@PathParam("id") int id, Suborder sub) {
+		return OrderManager.addSuborder(id, sub);
 	}
 
 	@POST
