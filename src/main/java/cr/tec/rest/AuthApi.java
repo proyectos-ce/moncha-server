@@ -10,6 +10,7 @@ import org.jose4j.lang.JoseException;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.LinkedList;
 
 /**
  * Created by joseph on 10/30/16.
@@ -41,6 +42,7 @@ public class AuthApi {
 	@Consumes({MediaType.APPLICATION_JSON})
 	public Response authChef(User meta) throws JoseException, JsonProcessingException {
 		meta.setRole(Role.CHEF);
+		UserList.add(meta);
 		return Response.ok(TokenProvider.issueToken(meta)).header("Access-Control-Allow-Origin", "*").build();
 
 	}
@@ -62,6 +64,13 @@ public class AuthApi {
 		} else {
 			return verified;
 		}
+	}
+
+	@GET
+	@Path("/list")
+	@Produces({MediaType.APPLICATION_JSON})
+	public LinkedList<User> listUsers() {
+		return UserList.getList();
 	}
 
 }

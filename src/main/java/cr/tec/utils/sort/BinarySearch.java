@@ -59,4 +59,22 @@ public class BinarySearch {
 
 	}
 
+	public static User userSearch(LinkedList<User> list, int data){
+		int minIndex = 0;
+		int maxIndex =  list.size();
+		while(maxIndex >=minIndex){
+			int middle = (minIndex + maxIndex)/2;
+			if(list.get(middle).getId() - data < 0){
+				minIndex = middle +1;
+			} else if (list.get(middle).getId() - data > 0){
+				maxIndex = middle - 1;
+			} else{
+				return list.get(middle);
+			}
+
+		}
+		return null;
+
+	}
+
 }
