@@ -1,7 +1,12 @@
 package cr.tec.struct.generic;
 
 import java.io.Serializable;
-
+/**
+ * 
+ * @author Jimena
+ *Main class Node that works as a container for the other structures
+ * @param <T>
+ */
 public class Node<T> implements Serializable {
 	private T data;
 	private Node<T> next;

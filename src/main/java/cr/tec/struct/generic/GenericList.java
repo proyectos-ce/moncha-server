@@ -3,11 +3,14 @@ package cr.tec.struct.generic;
 
 import java.io.Serializable;
 import java.util.Iterator;
-
+/**
+ * 
+ * @author Jimena
+ *Main class GenericList that creates a generic list able to contain any kind of object
+ * @param <T>
+ */
 public class GenericList<T> implements Iterable<T>, Serializable{
-	/**
-	 *
-	 */
+
 	private static final long serialVersionUID = -6452243518230709681L;
 	private Node<T> head;
 	private int lenght;
@@ -17,7 +20,10 @@ public class GenericList<T> implements Iterable<T>, Serializable{
 		this.head = null;
 		this.lenght = 0;
 	}
-
+/**
+ * Adds an element at the beginning
+ * @param data
+ */
 	public void addFirst(T data) {
 		if (this.head == null) {
 			this.head = new Node<T>(data);
@@ -28,7 +34,10 @@ public class GenericList<T> implements Iterable<T>, Serializable{
 		}
 		this.lenght++;
 	}
-
+/**
+ * Adds an element to the ending
+ * @param data
+ */
 	public void addLast(T data) {
 		if (this.head == null) {
 			addFirst(data);
@@ -43,7 +52,10 @@ public class GenericList<T> implements Iterable<T>, Serializable{
 			this.lenght++;
 		}
 	}
-
+/**
+ * Deletes a specific node
+ * @param data
+ */
 	public void deleteNode(T data) {
 		if (this.head == null) {
 			System.out.println("La lista est� vac�a");
@@ -59,7 +71,9 @@ public class GenericList<T> implements Iterable<T>, Serializable{
 			}
 		}
 	}
-
+/**
+ * Deletes the first node of a list
+ */
 	public void deleteFirst() {
 		if (this.head == null) {
 			System.out.println("La lista est� vac�a");
@@ -72,7 +86,9 @@ public class GenericList<T> implements Iterable<T>, Serializable{
 			this.lenght--;
 		}
 	}
-
+/**
+ * Deletes the last node of the list
+ */
 	public void deleteLast() {
 		if (this.head == null) {
 			System.out.println("La lista est� vac�a");
@@ -89,7 +105,10 @@ public class GenericList<T> implements Iterable<T>, Serializable{
 			this.lenght--;
 		}
 	}
-
+/**
+ * Deletes a node at a specific position
+ * @param index
+ */
 	public void deleteAt(int index) {
 		if (this.head == null) {
 			System.out.println("La lista est� vac�a");
@@ -111,7 +130,10 @@ public class GenericList<T> implements Iterable<T>, Serializable{
 			System.out.println("Index out of range");
 		}
 	}
-
+/**
+ * Gets the last node of a list
+ * @return
+ */
 	public Node<T> getLast(){
 		if(this.head == null){
 			System.out.println("La lista esta vacia");
@@ -131,7 +153,11 @@ public class GenericList<T> implements Iterable<T>, Serializable{
 		}
 
 	}
-
+/**
+ * Get a specific node at a certain position 
+ * @param index
+ * @return
+ */
 	public Node<T> getAt(int index) {
 		if (this.head == null) {
 			System.out.println("La lista est� vac�a");
@@ -149,7 +175,11 @@ public class GenericList<T> implements Iterable<T>, Serializable{
 		}
 		return null;
 	}
-
+/**
+ * Sets the data of a node at a specific position 
+ * @param index
+ * @param data
+ */
 	public void setAt(int index, T data) {
 		if (this.head == null) {
 			System.out.println("La lista est� vac�a");
