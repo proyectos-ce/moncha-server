@@ -112,7 +112,12 @@ public class OrderManager {
 
 	public static Order getOrder(int id) {
 		LinkedList<Order> orders = getAllOrders();
-		return BinarySearch.orderSearch(orders, id);
+		for (Order order : orders) {
+			if (order.getId() == id) {
+				return order;
+			}
+		}
+		return null;
 
 	}
 

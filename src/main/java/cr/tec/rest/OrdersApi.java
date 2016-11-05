@@ -164,6 +164,17 @@ public class OrdersApi {
 			suborders.get(sub - 1).setCompleted(true);
 		}
 
+		Boolean orderCompleted = true;
+		for (Suborder suborder : suborders) {
+			if (!suborder.isCompleted()) {
+				orderCompleted = false;
+			}
+		}
+
+		if (orderCompleted) {
+			OrderManager.getOrder(id).setCompleted(true);
+		}
+
 		return new Message("ok", "Order updated");
 	}
 
