@@ -31,7 +31,9 @@ public class Ingredient{
 		this.name=name;
 		this.quantity=quantity;
 	}
-
+/**
+ * Empty constructor
+ */
 	public Ingredient(){
 
 	}
