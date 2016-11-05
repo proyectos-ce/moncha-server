@@ -10,6 +10,7 @@ import com.thoughtworks.xstream.XStream;
 import cr.tec.struct.Ingredient;
 import cr.tec.struct.Message;
 import cr.tec.struct.Suborder;
+import cr.tec.utils.sort.BinarySearch;
 
 /**
  * Created by joseph on 10/26/16.
@@ -94,11 +95,6 @@ public class Database {
 	}
 
 	public static Dish getDish(int id) {
-			for (Dish dish : Database.getDishes()) {
-				if (dish.getId() == id) {
-					return dish;
-				}
-			}
-			return null;
+		return BinarySearch.dishSearch(Database.getDishes(), id);
 	}
 }

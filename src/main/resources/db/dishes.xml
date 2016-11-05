@@ -1,8 +1,8 @@
 <dishes>
     <dish>
-        <price>2500.0</price>
+        <price>1200.0</price>
         <nutValue>100</nutValue>
-        <prepTime>10</prepTime>
+        <prepTime>16</prepTime>
         <ingredientsList/>
         <recipe>
             <cr.tec.struct.RecipeStep>
@@ -26,7 +26,7 @@
                 <time>1.0</time>
             </cr.tec.struct.RecipeStep>
         </recipe>
-        <name>Papas fritas</name>
+        <name>Papas fritas italianas</name>
         <id>1</id>
     </dish>
     <dish>
@@ -34,8 +34,24 @@
         <nutValue>300</nutValue>
         <prepTime>30</prepTime>
         <ingredientsList/>
-        <recipe/>
-        <name>Sopa azteca</name>
+        <recipe>
+            <cr.tec.struct.RecipeStep>
+                <title>Calentar ingredientes</title>
+                <description>En una olla poner a calentar el aceite agregar el ajo y la cebolla, añadir el tomate rojo junto con los 2 chiles pasilla, agregar el caldo de pollo, el epazote, sal, la pimienta y los cuadros de tortilla, dejar hervir y licuar todo junto.</description>
+                <time>10.0</time>
+            </cr.tec.struct.RecipeStep>
+            <cr.tec.struct.RecipeStep>
+                <title>Fuego lento</title>
+                <description>Regresar todo licuado ala olla y en fuego lento sazonar hasta espesar.</description>
+                <time>20.0</time>
+            </cr.tec.struct.RecipeStep>
+            <cr.tec.struct.RecipeStep>
+                <title>Servir</title>
+                <description>Se acompaña con el pollo deshebrado, las tortillas en julianas, el queso en cubos un poco de crema, aguacate en cubos y un poco de chile pasilla.</description>
+                <time>3.0</time>
+            </cr.tec.struct.RecipeStep>
+        </recipe>
+        <name>Sopa azteca de la casa</name>
         <id>2</id>
     </dish>
 </dishes>

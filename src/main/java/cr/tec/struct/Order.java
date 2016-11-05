@@ -17,14 +17,18 @@ public class Order implements Comparable<Order> {
 	private int table;
 	private int user;
 	private LinkedList<Suborder> suborders;
-	private String chef;
 	private int id;
 	private boolean completed;
 	private boolean delivered;
 	private boolean payed;
+<<<<<<< HEAD
 /**
  * Empty constructor for order
  */
+=======
+	private double price;
+
+>>>>>>> e0253004e1fd56608315dfacb02b85519d883479
 	public Order() {
 		this.id = lastId + 1;
 		lastId++;
@@ -109,14 +113,6 @@ public class Order implements Comparable<Order> {
 		this.suborders = suborders;
 	}
 
-	public String getChef() {
-		return chef;
-	}
-
-	public void setChef(String chef) {
-		this.chef = chef;
-	}
-
 	public int getId() {
 		return id;
 	}
@@ -131,5 +127,13 @@ public class Order implements Comparable<Order> {
 
 	public void setUser(int user) {
 		this.user = user;
+	}
+
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
 	}
 }

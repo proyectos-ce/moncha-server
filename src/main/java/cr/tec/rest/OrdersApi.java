@@ -37,6 +37,48 @@ public class OrdersApi {
 		return OrderManager.getAllOrders();
 	}
 
+	@GET
+	@Path("my")
+	@Secured
+	@Produces({MediaType.APPLICATION_JSON})
+	public Order getMyOrder() {
+		LinkedList<Order> orders = OrderManager.getAllOrders();
+		for (Order order:orders) {
+			if (order.getUser() == getUser().getUserData().getId()) {
+				return order;
+			}
+		}
+
+		return null;
+	}
+
+	@POST
+	@Path("my")
+	@Secured
+	@Consumes({MediaType.APPLICATION_JSON})
+	@Produces({MediaType.APPLICATION_JSON})
+	public Message addMySuborder(Suborder sub) {
+		LinkedList<Order> orders = OrderManager.getAllOrders();
+		for (Order order:orders) {
+			System.out.println(order.getUser());
+			System.out.println("Imprimir orderr");
+			System.out.println(getUser().getUserData().getId());
+			System.out.println("imprimi udata");
+			if (order.getUser() == getUser().getUserData().getId()) {
+				return OrderManager.addSuborder(order.getId(), sub);
+			}
+		}
+		return null;
+	}
+
+	@GET
+	@Path("mine")
+	@Secured
+	@Produces({MediaType.APPLICATION_JSON})
+	public LinkedList<Work> getMyOrders() {
+		return UserList.get(getUser().getUserData().getId()).getCurrentWorks();
+	}
+
 
 	@GET
 	@Path("{id}")
@@ -50,6 +92,14 @@ public class OrdersApi {
 	@Produces({MediaType.APPLICATION_JSON})
 	public Suborder getSuborder(@PathParam("id") int id, @PathParam("sub") int sub) {
 		return OrderManager.getOrder(id).getSuborders().get(sub - 1);
+	}
+
+	@POST
+	@Path("{id}/suborders/")
+	@Consumes({MediaType.APPLICATION_JSON})
+	@Produces({MediaType.APPLICATION_JSON})
+	public Message addSuborder(@PathParam("id") int id, Suborder sub) {
+		return OrderManager.addSuborder(id, sub);
 	}
 
 	@POST
@@ -68,6 +118,13 @@ public class OrdersApi {
 			if (!suborder.isCompleted()) {
 				orderCompleted = false;
 			}
+		}
+
+		for (Work work : getUser().getUserData().getCurrentWorks() ) {
+			if (work.getOrder() == id && work.getSuborder() == sub) {
+				getUser().getUserData().getCurrentWorks().remove(work);
+			}
+
 		}
 
 		if (orderCompleted) {
@@ -105,6 +162,17 @@ public class OrdersApi {
 
 		if (suborderCompleted) {
 			suborders.get(sub - 1).setCompleted(true);
+		}
+
+		Boolean orderCompleted = true;
+		for (Suborder suborder : suborders) {
+			if (!suborder.isCompleted()) {
+				orderCompleted = false;
+			}
+		}
+
+		if (orderCompleted) {
+			OrderManager.getOrder(id).setCompleted(true);
 		}
 
 		return new Message("ok", "Order updated");
