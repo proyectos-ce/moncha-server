@@ -18,6 +18,7 @@ public class Order implements Comparable<Order> {
 	private boolean completed;
 	private boolean delivered;
 	private boolean payed;
+	private double price;
 
 	public Order() {
 		this.id = lastId + 1;
@@ -101,5 +102,13 @@ public class Order implements Comparable<Order> {
 
 	public void setUser(int user) {
 		this.user = user;
+	}
+
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
 	}
 }

@@ -17,8 +17,11 @@ public class OrderManager {
 		if (tableId <= 0 || suborders == null || suborders.size() == 0) {
 			return new Message("error", "Invalid data");
 		}
+		Double price = 0.0;
+
 		Table table = TableList.get(tableId);
 		for (Suborder sub : suborders) {
+			price += Database.getDish(sub.getDishId()).getPrice() * sub.getQuantity();
 			Dish dish = Database.getDish(sub.getDishId());
 			if (dish == null) {
 				return new Message("error", "The order has an invalid dish.");
@@ -32,6 +35,7 @@ public class OrderManager {
 		Order order = new Order();
 		order.setSuborders(suborders);
 		order.setTable(tableId);
+		order.setPrice(price);
 		order.setType(type);
 		order.setUser(user.getId());
 		table.getOrders().add(order);
