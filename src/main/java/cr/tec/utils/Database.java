@@ -8,6 +8,8 @@ import java.util.Scanner;
 
 import com.thoughtworks.xstream.XStream;
 import cr.tec.struct.Ingredient;
+import cr.tec.struct.Message;
+import cr.tec.struct.Suborder;
 
 /**
  * Created by joseph on 10/26/16.
@@ -89,5 +91,14 @@ public class Database {
 	public static LinkedList<Ingredient> getIngredients() {
 		String xml = getFile("ingredients.xml");
 		return (LinkedList<Ingredient>)ingredientsWorker.fromXML(xml);
+	}
+
+	public static Dish getDish(int id) {
+			for (Dish dish : Database.getDishes()) {
+				if (dish.getId() == id) {
+					return dish;
+				}
+			}
+			return null;
 	}
 }

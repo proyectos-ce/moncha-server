@@ -7,13 +7,12 @@ package cr.tec.struct;
 public class RecipeStep {
 	private String title;
 	private String description;
-	private double aproxTime;
-	private long realTime;
+	private double time;
 
-	public RecipeStep(String title, String description, double aproxTime){
+	public RecipeStep(String title, String description, double time){
 		this.title = title;
 		this.description = description;
-		this.aproxTime = aproxTime;
+		this.time = time;
 
 	}
 
@@ -35,27 +34,18 @@ public class RecipeStep {
 		this.description = description;
 	}
 
-	public double getAproxTime() {
-		return aproxTime;
+	public double getTime() {
+		return time;
 	}
 
-	public void setAproxTime(double aproxTime) {
-		this.aproxTime = aproxTime;
-	}
-
-	public long getRealTime() {
-		return realTime;
-	}
-
-	public void setRealTime(long realTime) {
-		this.realTime = realTime;
+	public void setTime(double time) {
+		this.time = time;
 	}
 
 
 	@Override
 	public String toString() {
-		String result = getTitle() + ":\n" + getDescription() + "\n" + "Approximated time " + getAproxTime() + " hours\n";
-		return result;
+		return getTitle();
 	}
 
 

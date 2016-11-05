@@ -11,16 +11,15 @@ public class Order implements Comparable<Order> {
 	private OrderType type;
 	private int table;
 	private LinkedList<Suborder> suborders;
+	private String chef;
+	private int id;
 
+	private static int lastId = 0;
 
-	public Order(OrderType orderPriority, int table, LinkedList<Suborder> suborders, long time) {
-		this.type = orderPriority;
-		this.suborders = suborders;
-		this.table = table;
-	}
 
 	public Order() {
-		super();
+		this.id = lastId + 1;
+		lastId++;
 	}
 
 	public OrderType getType() {
@@ -52,5 +51,21 @@ public class Order implements Comparable<Order> {
 
 	public void setSuborders(LinkedList<Suborder> suborders) {
 		this.suborders = suborders;
+	}
+
+	public String getChef() {
+		return chef;
+	}
+
+	public void setChef(String chef) {
+		this.chef = chef;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 }

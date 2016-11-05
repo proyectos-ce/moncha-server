@@ -15,11 +15,6 @@ public class Dish {
 	private LinkedList<Ingredient> ingredientsList;
 	private LinkedList<RecipeStep> recipe;
 	private String name;
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
 	private int id;
 
 	public Dish() {
@@ -38,6 +33,10 @@ public class Dish {
 
 	public int getId() {
 		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public void addIngredient(Ingredient newIngredient) {

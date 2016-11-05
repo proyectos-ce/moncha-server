@@ -4,7 +4,28 @@
         <nutValue>100</nutValue>
         <prepTime>10</prepTime>
         <ingredientsList/>
-        <recipe/>
+        <recipe>
+            <cr.tec.struct.RecipeStep>
+                <title>Cortar</title>
+                <description>Cortar las papas con el tamaño adecuado</description>
+                <time>3.0</time>
+            </cr.tec.struct.RecipeStep>
+            <cr.tec.struct.RecipeStep>
+                <title>Freir</title>
+                <description>Fría a temperatura media</description>
+                <time>10.0</time>
+            </cr.tec.struct.RecipeStep>
+            <cr.tec.struct.RecipeStep>
+                <title>Salpimentar</title>
+                <description>Añada una pizca de sal</description>
+                <time>3.0</time>
+            </cr.tec.struct.RecipeStep>
+            <cr.tec.struct.RecipeStep>
+                <title>Servir</title>
+                <description>Sirva las papas en nuestro contenedor especial. ¡No olvide las salas y otros acompañamientos!</description>
+                <time>1.0</time>
+            </cr.tec.struct.RecipeStep>
+        </recipe>
         <name>Papas fritas</name>
         <id>1</id>
     </dish>

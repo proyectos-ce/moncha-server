@@ -1,10 +1,31 @@
 package cr.tec.struct;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import java.util.HashMap;
+import java.util.LinkedList;
+
 /**
  * Created by joseph on 11/3/16.
  */
+@JsonIgnoreProperties({"steps"})
 public class Suborder {
-	public int dishId;
+	private int dishId;
+	private String comment;
+	private int quantity;
+	private boolean completed;
+	private HashMap<RecipeStep, Boolean> steps = new HashMap<>();
+
+	public Suborder() {
+	}
+
+	public String getComment() {
+		return comment;
+	}
+
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
 
 	public int getDishId() {
 		return dishId;
@@ -22,7 +43,15 @@ public class Suborder {
 		this.quantity = quantity;
 	}
 
-	public int quantity;
+	public HashMap<RecipeStep, Boolean> getSteps() {
+		return steps;
+	}
 
-	public Suborder() {}
+	public boolean isCompleted() {
+		return completed;
+	}
+
+	public void setCompleted(boolean completed) {
+		this.completed = completed;
+	}
 }
