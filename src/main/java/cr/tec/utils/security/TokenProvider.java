@@ -16,7 +16,7 @@ import org.jose4j.lang.JoseException;
  * Created by joseph on 10/30/16.
  */
 public class TokenProvider {
-	private static String secret = "Xz91Jn4yNlU23Tn5RfR7TyZYT0knAokWftBwzR5LIvzGt9pGkqLICOYCxkNrlA1C";
+	private static String secret = "Xz91Jn4yNlU23Tn5RfR7TyZYT0knAokWftBwzR5LIvzGt9pGkqLICOYCxkNrlA1C"; // God forgive me for this
 	private static boolean initialized = false;
 
 
